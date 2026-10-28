@@ -1,0 +1,30 @@
+# built release files (make them with: python3 tools/build.py)
+dist/
+
+# macOS / editors
+.DS_Store
+*.swp
+
+# dev bridge runtime files
+dev/cmd.lua
+dev/cmd.lua.tmp
+dev/out.txt
+
+# test leftovers: projects, exported findings, probe images
+*.RPP
+*.rpp
+*.RPP-bak
+*.rpp-bak
+*findings*
+dev/probe_*.png
+dev/icon_sheet.png
+
+# old builds and test themes
+*.ReaperThemeZip
+*.bak
+zig*
+TTS_*
+build/
+_src/
+Inference Review and Presentation Kit/
+*.ReaperMenu
