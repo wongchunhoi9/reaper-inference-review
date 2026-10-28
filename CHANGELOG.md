@@ -3,7 +3,7 @@
 One version number for the whole kit (theme + scripts + toolbar). Each entry says what changed and
 what teammates must redo after updating (re-import the toolbar, re-assign shortcuts, reload the theme).
 
-## 1.1.0 (unreleased)
+## 1.1.0 (2026-10-28)
 
 Playback tools (toolbar 15, yellow):
 - **Swap & replay**: switch to the other config and play again from where playback started.
