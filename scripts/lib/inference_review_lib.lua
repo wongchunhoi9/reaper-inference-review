@@ -194,6 +194,34 @@ function T.set_active(tr, keep_selection)
   end
 end
 
+-- A/B: B = the config heard now, A = the one heard before it (the same memory A/B swap uses).
+function T.track_name(tr)
+  if not tr then return "(none)" end
+  local _, n = reaper.GetSetMediaTrackInfo_String(tr, "P_NAME", "", false)
+  return n ~= "" and n or ("Track " .. math.floor(reaper.GetMediaTrackInfo_Value(tr, "IP_TRACKNUMBER")))
+end
+function T.ab_pair()
+  local b, a = T.get_active(), T.get_previous()
+  if a == b then a = nil end
+  return a, b
+end
+-- The config A/B swap would switch to: A if known, else the selected config, else REF / the next one.
+function T.ab_target()
+  local list = T.config_tracks(0)
+  if #list == 0 then return nil end
+  local a, b = T.ab_pair()
+  if a then return a end
+  local sel = reaper.GetSelectedTrack(0, 0)
+  if sel and T.is_config_role(T.get_role(sel)) and sel ~= b then return sel end
+  if list[1] ~= b then return list[1] end
+  return list[2] or list[1]
+end
+
+-- Audible REF / config tracks only (note lanes never play).
+function T.ref_track()
+  for _, t in ipairs(T.tracks_with_roles(0)) do if t.role == "ref" then return t.tr end end
+end
+
 function T.msg(s) reaper.ShowMessageBox(s, "Inference Review and Presentation", 0) end
 
 -- REAPER version as a number: "7.83/macOS-arm64" -> 7.83

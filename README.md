@@ -117,12 +117,50 @@ Script names start with `Inference Review and Presentation - `; search the actio
 | Safe playback ON/OFF | Safe playback mode | Toggles the mode above. | nothing (turn it on before presenting) | `P` |
 | ◀ Previous / Next ▶ | Solo previous config / Solo next config | Solos the previous / next lane (REF, A, B …) and lights up its name; playback keeps running. | REF / config lanes | `[` / `]` |
 | A/B swap | A-B swap | Flips between the current and the previously heard config. | two configs heard in this session | `Tab` |
+| Swap & replay | Swap and replay | Switches like A/B swap and plays again from where playback started (the edit cursor). | REF / config lanes | — |
+| A/B window | A-B window | Shows which config is **A** (heard before) and **B** (playing now), with an A ⇄ B crossfader. See below. | two configs heard | — |
+| Level match ON/OFF | Level match ON-OFF | Toggle (yellow = ON). Sets every config take as loud as REF in the same prompt; prompts without REF go to −23 LUFS-I. OFF restores the original volumes. See below. | audio on REF / config lanes | — |
+| LM settings | Level match settings | Match REF or a fixed LUFS-I, fallback level, boost limit; re-measures when level matching is on. | nothing | — |
 | **Toolbar 15: Output** (orange) | | | | |
 | Export findings | Export findings | Markdown report + CSV of take markers (start, end, duration) next to the project file. | saved project | — |
 | Settings | Theme settings | Sliders for track name size, name width and compact height. | the Inference_Review_and_Presentation theme active | — |
 | About | About | Kit version, theme version actually loaded, REAPER version; warns if REAPER is older than 7.62, the theme isn't active, or the theme is from another kit version. | nothing | — |
 
-Not on the toolbars: **Lock height of all tracks**, **Unlock height of all tracks**, **Create toolbar file**.
+Not on the toolbars: **Lock height of all tracks**, **Unlock height of all tracks**, **Create toolbar file**,
+**Audition config 0** … **9** (for number keys, below).
+
+## Number keys: Audition config 0–9
+
+Ten scripts, **Audition config 0** (REF) and **1**–**9** (config lanes in track order; note lanes don't count).
+Each solos that lane on its own, exactly like clicking its name, so they work with Safe playback and the A/B memory.
+Scripts can't assign keys, so set them once per computer in the action list (search "Audition config").
+REAPER already uses keys 1–9 to jump to markers; either replace those, or use **Shift+1…9** or the numpad.
+
+## A/B window and crossfader
+
+**A** is the config you heard before, **B** the one playing now (the same memory A/B swap uses). The window
+keeps this read-out up to date however you switch (names, Next, number keys, A/B swap).
+Drag the slider (or press **← →**) to hear A and B **together**: an equal-power crossfade, centre = both at −3 dB.
+**Space** jumps to the other end. Safe playback allows the two solos while you do this.
+The crossfader works on track faders and **puts the original fader levels back** when the fade ends.
+Closing the window (or **Esc**) keeps the side you were nearer, playing on its own; switching config any other
+way also ends the fade.
+
+## Level matching
+
+So that A/B choices aren't decided by loudness. **Level match ON/OFF** measures each REF / config take's
+integrated loudness (LUFS-I, REAPER's own measurement, no extensions) over the part the item plays, then:
+
+* **Match REF** (default): each config take is set as loud as the REF take in the **same prompt region**, as you
+  hear REF now. Prompts without a REF take use the fallback, **−23 LUFS-I**.
+* **Fixed**: every take, REF included, goes to the fixed target (e.g. −23 or −16 LUFS-I). Choose in **LM settings**.
+
+It changes **take volume** only (non-destructive; track faders and item volume are left alone) and remembers each
+original. Turning it **OFF** puts every original take volume back. Boost is limited (default +12 dB); a report lists
+takes that hit the limit and takes whose true peak would go above −1 dBTP. After new renders, run
+**LM settings** → OK to re-measure. **Export findings** shows each level-matched take's offset (`LM +1.8 dB`,
+CSV column `level_match_db`). The toolbar light follows the project you switched it in; after restarting REAPER it
+shows OFF until pressed, even if a saved project still has level matching applied (pressing it then turns it off).
 
 ## Track roles and layouts
 

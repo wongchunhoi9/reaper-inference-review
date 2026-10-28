@@ -5,6 +5,17 @@ what teammates must redo after updating (re-import the toolbar, re-assign shortc
 
 ## 1.1.0 (unreleased)
 
+Playback tools (toolbar 15, yellow):
+- **Swap & replay**: switch to the other config and play again from where playback started.
+- **A/B window**: live "A = heard before / B = playing now" read-out with an A ⇄ B equal-power crossfader
+  (restores track faders afterwards; Safe playback allows both while fading).
+- **Level match ON/OFF** + **LM settings**: every config as loud as REF in the same prompt (LUFS-I), −23 LUFS-I where a
+  prompt has no REF, or a fixed target; take volume only, fully reversible; boost limit and clip warnings.
+  Export findings shows the offset per take.
+- **Audition config 0–9** scripts for number keys (0 = REF).
+
+Earlier in 1.1.0:
+
 - **Two toolbars** instead of one: Floating toolbar 16 = Session (grey) + Annotate (blue),
   Floating toolbar 15 = Playback (yellow) + Output (orange). Dock 15 under 16 for two rows.
 - **Tooltips** on every button: what it does, what it needs, and the script name. Same text in each script header
@@ -19,7 +30,8 @@ what teammates must redo after updating (re-import the toolbar, re-assign shortc
 - The theme now carries the kit version (theme parameter "Review - Kit version", shown under Theme adjuster parameters).
 
 **After updating:** in the action list, remove the old "Inference Review and Presentation - Build review session"
-action and load the new "Initiate session" and "About" scripts. Run *Create toolbar file*, then import the *toolbar 16* file
+action and load the new scripts (Initiate session, About, Swap and replay, A-B window, Level match ON-OFF,
+Level match settings, Audition config 0-9). Run *Create toolbar file*, then import the *toolbar 16* file
 into Floating toolbar 16 and the *toolbar 15* file into Floating toolbar 15. Re-assign any shortcut you had
 on "Build review session". Double-click the new theme zip so the theme version matches (About checks this).
 

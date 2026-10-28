@@ -5,8 +5,13 @@ local isrc = IRP_ROOT .. "icons/"
 local dst = reaper.GetResourcePath() .. "/Scripts/Inference Review and Presentation/"
 reaper.RecursiveCreateDirectory(dst .. "lib", 0)
 local function copy(a, b) local f = io.open(a, "rb"); if not f then return false end local s = f:read("*a"); f:close(); local g = io.open(b, "wb"); g:write(s); g:close(); return true end
-copy(src .. "lib/inference_review_lib.lua", dst .. "lib/inference_review_lib.lua")
-print("lib", loadfile(dst .. "lib/inference_review_lib.lua") and "ok" or "SYNTAX ERR")
+local li = 0
+while true do -- every file in lib/
+  local fn = reaper.EnumerateFiles(src .. "lib/", li); if not fn then break end
+  copy(src .. "lib/" .. fn, dst .. "lib/" .. fn)
+  if fn:match("%.lua$") then local _, e = loadfile(dst .. "lib/" .. fn); print("lib", fn, e or "ok") end
+  li = li + 1
+end
 local registered = {}
 local kb = io.open(reaper.GetResourcePath() .. "/reaper-kb.ini"); local kbs = kb and kb:read("*a") or ""; if kb then kb:close() end
 local i = 0

@@ -5,7 +5,8 @@
 --  * only ONE of REF / configs is ever audible (exclusive solo in place);
 --  * click a config's name (select it) to switch to it instantly, playback keeps running;
 --  * soloing another track with its S button also switches; un-soloing everything falls back to the last one;
---  * note lanes never play (no output).
+--  * note lanes never play (no output);
+--  * exception: while the A/B window's crossfader is in use, A and B both play.
 -- Run again (or press the button) to turn it off.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
@@ -37,7 +38,10 @@ end
 
 local function tick()
   local list = T.config_tracks(0)
-  if #list > 0 then
+  -- While the A/B window's crossfader is in use, A and B are both soloed on purpose: don't interfere.
+  local xfading = reaper.GetExtState(T.EXT, "xfade") == "1"
+  if xfading then last_solo = {} end
+  if #list > 0 and not xfading then
     local active = T.get_active()
     -- 1) selection change -> audition the newly selected config
     local sel = first_selected_config()

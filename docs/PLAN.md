@@ -38,6 +38,8 @@ Based on Cockos Default 7.0 (Stash download, LGPL v2+). Source in `theme/src/`, 
 | Safe playback mode (toggle) | playback | done |
 | Solo previous / next config | playback | done |
 | A-B swap | playback | done |
+| Swap and replay, A-B window (read-out + crossfader), Audition config 0-9 | playback | done |
+| Level match ON-OFF, Level match settings (lib/level_match.lua) | playback | done |
 | Export findings (.md + .csv) | output | done |
 | Theme settings (slider window) | output | done |
 | About (kit / theme / REAPER versions + warnings) | output | done |
@@ -117,34 +119,35 @@ Based on Cockos Default 7.0 (Stash download, LGPL v2+). Source in `theme/src/`, 
 
 ## Phase 3: Playback tools
 
-- [ ] **A/B labels**: A = the previously heard config, B = the current one (same memory A/B swap already uses).
+- [x] **A/B labels**: A = the previously heard config, B = the current one (same memory A/B swap already uses).
       Show them: A/B swap button tooltip + the crossfader window title + a small "A ▸ name / B ▸ name" read-out.
       Optional: mark them in the track panel (prefix in name is intrusive; better a small A/B badge via a
       theme parameter per track is not possible in WALTER, so the read-out window is the realistic option).
-- [ ] **Swap & replay** (item 10): switch to the other config and restart playback from where the last play started.
+- [x] **Swap & replay** (item 10): switch to the other config and restart playback from where the last play started.
       Name proposal: **"Swap & replay"** (alt: "A/B from start"). Uses the play start position
       (edit cursor when playback began), sets it, switches, restarts. Works with Safe playback.
-- [ ] **A/B crossfader** (fun tool): small window with one slider A ⇄ B.
+- [x] **A/B crossfader** (fun tool): small window with one slider A ⇄ B.
       Both A and B are soloed (exception allowed by Safe playback while the window is open), equal-power curve
       on track volume (or a JSFX on each track for sample-accurate fades), centre = both at -3 dB.
       Keys: left/right arrows nudge, space = jump to the other end. Closing the window returns to exclusive solo on B.
-- [ ] **Number keys 1-9** (plan):
+- [x] **Number keys 1-9** (plan):
   - 10 tiny scripts "Audition config 0..9": `0` = REF, `1`..`9` = configs A..I in track order (skips note lanes).
   - Each calls the same exclusive-solo function, so they work with Safe playback and A/B memory.
   - Default REAPER keys 1-9 jump to markers; the README will suggest either replacing them or using
     `Shift+1..9` / numpad. Shortcuts are set per computer in the Action list (scripts can't assign keys).
-  - Toolbar: optional compact row "REF 1 2 3 4 5 6 7 8 9".
-- [ ] **Level-matched switching** (how it will work):
+  - Toolbar: optional compact row "REF 1 2 3 4 5 6 7 8 9". (Decided: no row for now.)
+- [x] **Level-matched switching** (how it will work):
   - Measure each config's loudness per prompt with REAPER's built-in `CalculateNormalization`
     (no extensions): integrated LUFS (speech) or RMS, over the item inside the prompt region.
   - **Reference level**, two modes (setting in the window):
     1. *Match REF*: target = REF's loudness in that prompt (everything sounds as loud as the reference read), or
     2. *Fixed target*: e.g. -23 LUFS-I (EBU R128) or -16 LUFS-I (typical online speech).
+    Decided: Match REF by default; a prompt with no REF falls back to -23 LUFS-I.
   - Apply the difference as **take volume** (non-destructive), remember the original in the take's P_EXT,
     write the offset into a column of the export ("LM +1.8 dB").
   - One button toggles level matching on/off (restores original take volumes), one re-measures after new renders.
   - Safety: cap boost at e.g. +12 dB; warn if a take would clip after gain (true peak > -1 dBTP).
-- [ ] **Loop current prompt** (maybe): toggle that sets the loop to the prompt region under the play cursor and
+- [ ] **Loop current prompt** (maybe; skipped 2026-10-28, owner: later): toggle that sets the loop to the prompt region under the play cursor and
       enables repeat; follows the cursor when you move to the next prompt. Pairs well with A/B swap.
 
 ## Phase 4: Distribution
