@@ -1,7 +1,7 @@
 # Inference Review and Presentation Kit (REAPER) — context for Claude Code
 
 Owner: audio engineer, reads code, not a coder. Explain changes in plain words; keep scripts commented.
-Remote: https://github.com/wongchunhoi9/reaper-inference-review (private).
+Remote: https://github.com/wongchunhoi9/reaper-inference-review (public since 2026-10-28; was private).
 Plan / checklist: **docs/PLAN.md** (work through it item by item; tick boxes when done).
 Version: one number for theme + scripts + toolbar, in `VERSION`, lib `T.VERSION` and theme param `rvKitVersion`;
 change it only with `python3 tools/set_version.py X.Y.Z` (build.py refuses mismatches). What changed: `CHANGELOG.md`.

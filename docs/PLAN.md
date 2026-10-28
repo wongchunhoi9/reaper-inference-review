@@ -59,7 +59,7 @@ Based on Cockos Default 7.0 (Stash download, LGPL v2+). Source in `theme/src/`, 
 ## Phase 0: Repository and naming (first Claude Code session)
 
 - [x] Folder renamed to `reaper-inference-review` (now on the Desktop; move off Desktop later if iCloud Desktop sync is on).
-- [x] GitHub repo created (private, empty): https://github.com/wongchunhoi9/reaper-inference-review
+- [x] GitHub repo created: https://github.com/wongchunhoi9/reaper-inference-review (made public 2026-10-28 for teammates)
 - [x] Dev bridge re-loaded from `dev/irp_dev_bridge.lua` in the new folder.
 - [x] Product renamed to **Inference Review and Presentation** (2026-10-28): theme `Inference_Review_and_Presentation`,
       layouts `Review` / `Review Note`, script prefix `Inference Review and Presentation - …`, P_EXT key `InferenceReview`,
