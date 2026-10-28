@@ -3,9 +3,10 @@
 --   Toolbar 16 = Session (grey) + Annotate (blue)
 --   Toolbar 15 = Playback (yellow) + Output (orange)
 -- 1) Copies the coloured button icons (icons/ next to this script) into REAPER's toolbar icon folder.
--- 2) Writes two .ReaperMenu files next to this script.
--- Then: Options > Customize menus/toolbars > pick 'Floating toolbar 16' > Import/Export > Import > the "toolbar 16" file,
---       then the same for 'Floating toolbar 15' with the "toolbar 15" file > OK.
+-- 2) Writes the toolbar files into REAPER's MenuSets folder (where REAPER keeps menu / toolbar files):
+--      one .ReaperMenuSet with both toolbars (one import), and one .ReaperMenu per toolbar (to import one at a time).
+-- Then: Options > Customize menus/toolbars > Import/Export > Import > the .ReaperMenuSet file > OK.
+--       (Or pick 'Floating toolbar 16' > Import the "toolbar 16" file, then the same for 15.)
 -- Hovering a button shows its tooltip: what it does, what it needs, and the script name (to find it in the action list).
 -- Needs: the kit scripts loaded in the action list.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
@@ -125,9 +126,21 @@ if f then
   f:close()
 end
 
--- 3) one .ReaperMenu file per toolbar. Without icons, buttons fall back to text with the short label.
-os.remove(dir .. "Inference Review and Presentation toolbar.ReaperMenu") -- single-toolbar file from 1.0.0
-local written, missing = {}, {}
+-- 3) toolbar text, then the files in MenuSets. Without icons, buttons fall back to text with the short label.
+local menudir = reaper.GetResourcePath() .. "/MenuSets/"
+reaper.RecursiveCreateDirectory(menudir, 0)
+local prefix = "Inference Review and Presentation "
+-- older versions wrote the files next to this script: remove those so only one copy is around
+os.remove(dir .. prefix .. "toolbar.ReaperMenu") -- single-toolbar file from 1.0.0
+for _, tb in ipairs(toolbars) do os.remove(dir .. prefix .. tb.file .. ".ReaperMenu") end
+
+local function write(path, text)
+  local g = io.open(path, "w")
+  if not g then return false end
+  g:write(text); g:close(); return true
+end
+
+local sections, missing, written = {}, {}, {}
 for _, tb in ipairs(toolbars) do
   local out, n = { "[" .. tb.section .. "]", "title=" .. tb.title }, 0
   for _, b in ipairs(tb.buttons) do
@@ -146,15 +159,21 @@ for _, tb in ipairs(toolbars) do
       missing[#missing + 1] = b[1]
     end
   end
-  local path = dir .. "Inference Review and Presentation " .. tb.file .. ".ReaperMenu"
-  local g = io.open(path, "w")
-  if not g then T.msg("Could not write " .. path) return end
-  g:write(table.concat(out, "\n") .. "\n"); g:close()
-  written[#written + 1] = path
+  local text = table.concat(out, "\n") .. "\n"
+  sections[#sections + 1] = text
+  local name = prefix .. tb.file .. ".ReaperMenu"
+  if not write(menudir .. name, text) then T.msg("Could not write " .. menudir .. name) return end
+  written[#written + 1] = name
 end
+-- both toolbars in one file: importing it changes toolbars 16 and 15 only
+local setname = prefix .. "toolbars 16 + 15.ReaperMenuSet"
+if not write(menudir .. setname, table.concat(sections, "\n")) then T.msg("Could not write " .. menudir .. setname) return end
+table.insert(written, 1, setname)
 
-T.msg("Toolbar files written:\n" .. table.concat(written, "\n") .. "\n\nIcons installed: " .. copied ..
+T.msg("Toolbar files written to\n" .. menudir .. "\n\n- " .. table.concat(written, "\n- ") .. "\n\nIcons installed: " .. copied ..
   (#missing > 0 and ("\n\nNot in the action list yet (load them first):\n- " .. table.concat(missing, "\n- ")) or "") ..
-  "\n\nImport: Options > Customize menus/toolbars > pick 'Floating toolbar 16' > Import/Export > Import > the 'toolbar 16' file." ..
-  "\nThen pick 'Floating toolbar 15' and import the 'toolbar 15' file. OK." ..
+  "\n\nImport: Options > Customize menus/toolbars > Import/Export > Import > the '" .. setname .. "' file > OK." ..
+  "\n(The import dialog may open in another folder: go to the MenuSets folder above.)" ..
+  "\nThis replaces Floating toolbars 16 and 15 only. To use other toolbar numbers, pick that toolbar in the list" ..
+  "\nand import the single 'toolbar 16' or 'toolbar 15' .ReaperMenu file instead." ..
   "\nShow them: in the action list run 'Toolbar: Open/close toolbar 16' and '... toolbar 15' (right-click a toolbar to dock it; dock 15 under 16).")

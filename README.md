@@ -73,11 +73,15 @@ Repository layout:
    In REAPER: **Actions > Show action list > New action > Load ReaScript**,
    select all the `Inference Review and Presentation - ….lua` files (not `lib`), **Open**.
 3. **Toolbars**: run **Inference Review and Presentation - Create toolbar file**. It installs the coloured button icons
-   and writes two files next to the scripts, using this computer's action IDs:
-   `… toolbar 16 (Session, Annotate).ReaperMenu` and `… toolbar 15 (Playback, Output).ReaperMenu`.
-   Then **Options > Customize menus/toolbars**: pick **Floating toolbar 16** in the top list,
-   **Import/Export > Import**, choose the *toolbar 16* file; pick **Floating toolbar 15**, import the *toolbar 15* file; **OK**.
-   (If you already use toolbar 15 or 16 for something else, import into any free floating toolbar instead.)
+   and writes the toolbar files, using this computer's action IDs, into REAPER's **MenuSets** folder
+   (REAPER resource path > `MenuSets`, where REAPER keeps menu and toolbar files):
+   `Inference Review and Presentation toolbars 16 + 15.ReaperMenuSet` (both toolbars) plus one `.ReaperMenu` per toolbar.
+   Then **Options > Customize menus/toolbars > Import/Export > Import**, go to the MenuSets folder
+   (the dialog may open somewhere else; on Mac press Cmd+Shift+G and paste the path the script shows),
+   choose the *toolbars 16 + 15* file, **OK**. This replaces Floating toolbars 16 and 15 only; your other toolbars
+   and menus stay as they are.
+   (If you already use toolbar 15 or 16 for something else: pick a free floating toolbar in the top list and
+   import the single *toolbar 16* or *toolbar 15* `.ReaperMenu` file into it instead.)
    Open them from the action list: run **Toolbar: Open/close toolbar 16** and **Toolbar: Open/close toolbar 15**
    and dock 15 under 16 for two tidy rows
    (right-click a toolbar > Dock). REAPER toolbars can't force a line break, which is why the kit uses two.

@@ -3,6 +3,12 @@
 One version number for the whole kit (theme + scripts + toolbar). Each entry says what changed and
 what teammates must redo after updating (re-import the toolbar, re-assign shortcuts, reload the theme).
 
+## Unreleased
+
+- **Create toolbar file** now writes into REAPER's `MenuSets` folder instead of next to the scripts, and adds
+  `… toolbars 16 + 15.ReaperMenuSet`: one import sets up both toolbars (other toolbars and menus are left alone).
+  Old toolbar files next to the scripts are removed.
+
 ## 1.1.0 (2026-10-28)
 
 Added to the release after publishing (same scripts and theme otherwise):
