@@ -1,0 +1,683 @@
+<REAPER_PROJECT 0.1 "7.83/macOS-arm64" 1793180683 0
+  <NOTES 0 2
+  >
+  RIPPLE 0 0
+  GROUPOVERRIDE 0 0 0 0
+  AUTOXFADE 137
+  ENVATTACH 3
+  POOLEDENVATTACH 0
+  TCPUIFLAGS 0
+  MIXERUIFLAGS 11 48 0
+  ENVFADESZ10 40
+  PEAKGAIN 1
+  FEEDBACK 0
+  PANLAW 1
+  PROJOFFS 0 0 0
+  MAXPROJLEN 0 0
+  GRID 3199 8 1 8 1 0 0 0
+  TIMEMODE 1 5 -1 30 0 0 -1 0
+  VIDEO_CONFIG 0 0 65792
+  PANMODE 3
+  PANLAWFLAGS 3
+  CURSOR 0
+  ZOOM 105.6 0 0
+  VZOOMEX 10.18977261 0
+  USE_REC_CFG 0
+  RECMODE 1
+  SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
+  LOOP 0
+  LOOPGRAN 0 4
+  RECORD_PATH "Media" ""
+  <RECORD_CFG
+    ZXZhdxgAAQ==
+  >
+  <APPLYFX_CFG
+  >
+  RENDER_FILE ""
+  RENDER_PATTERN ""
+  RENDER_FMT 0 2 0
+  RENDER_1X 0 0
+  RENDER_RANGE 1 0 0 0 1000
+  RENDER_RESAMPLE 3 0 1
+  RENDER_ADDTOPROJ 0
+  RENDER_STEMS 0
+  RENDER_DITHER 0
+  RENDER_TRIM 0.000001 0.000001 0 0
+  TIMELOCKMODE 1
+  TEMPOENVLOCKMODE 1
+  ITEMMIX 1
+  DEFPITCHMODE 589824 0
+  TAKELANE 1
+  SAMPLERATE 44100 0 0
+  <RENDER_CFG
+    ZXZhdxgAAQ==
+  >
+  LOCK 1
+  <METRONOME 6 2
+    VOL 0.25 0.125
+    BEATLEN 4
+    FREQ 1760 880 1
+    SAMPLES "" "" "" ""
+    SPLIGNORE 0 0
+    SPLDEF 2 660 "" 0 ""
+    SPLDEF 3 440 "" 0 ""
+    PATTERN 0 169
+    PATTERNSTR ABBB
+    MULT 1
+  >
+  GLOBAL_AUTO -1
+  TEMPO 120 4 4 0
+  PLAYRATE 1 0 0.25 4
+  SELECTION 0 14.5
+  SELECTION2 0 14.5
+  MASTERAUTOMODE 0
+  MASTERTRACKHEIGHT 0 0
+  MASTERPEAKCOL 16576
+  MASTERMUTESOLO 0
+  MASTERTRACKVIEW 0 0.6667 0.5 0.5 0 0 0 0 0 0 0 0 0 0 1
+  MASTERHWOUT 0 0 1 0 0 0 0 -1
+  MASTER_NCH 2 2
+  MASTER_VOLUME 1 0 -1 -1 1
+  MASTER_PANMODE 3
+  MASTER_PANLAWFLAGS 3
+  MASTER_FX 1
+  MASTER_TRACKID {9000B626-D71B-BC4F-B924-C2E0CB79ACE9}
+  MASTER_SEL 0
+  <MASTERPLAYSPEEDENV
+    EGUID {ED93199B-F435-F647-ADB7-50430F350A54}
+    ACT 0 -1
+    VIS 0 1 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 0 -1 -1
+  >
+  <TEMPOENVEX
+    EGUID {2BE15538-B532-6442-8E0B-F5A573CC9EFA}
+    ACT 0 -1
+    VIS 1 0 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 1 -1 -1
+  >
+  RULERHEIGHT 67 86
+  RULERLANE 1 4 "" 0 -1 0
+  RULERLANE 2 8 "" 0 -1 0
+  MARKER 1 0 P01 1 26792426 1 B {E0E64111-1036-2B43-A62B-EA1C3C4F6949} 0 1
+  MARKER 1 4.5 "" 1
+  MARKER 4 0 "Round 1" 9 32797755 1 B {6C07FBCE-7360-A947-B953-DA75F990828B} 0 2
+  MARKER 4 14.5 "" 9
+  MARKER 2 5 P02 1 26792426 1 B {BD4B68CA-7152-E64F-B29A-98306F66DA49} 0 1
+  MARKER 2 9.5 "" 1
+  MARKER 3 10 P03 1 26792426 1 B {452C9DB9-C3B0-5C4A-B5FA-68CFE30589CA} 0 1
+  MARKER 3 14.5 "" 1
+  <PROJBAY
+  >
+  <TRACK {68EC231E-AEF1-FC49-837B-6295E9AE7DC1}
+    NAME PROMPT
+    PEAKCOL 32166296
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 162 0 1 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {68EC231E-AEF1-FC49-837B-6295E9AE7DC1}
+    PERF 0
+    LAYOUTS "Review Note" ""
+    <EXT
+      InferenceReview_role prompt
+    >
+    MIDIOUT -1 -1
+    MAINSEND 0 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 4.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1E99690D-96CE-594A-97CD-3CECF04ED8AD}
+      IID 39
+      <NOTES
+        |P01
+        |The quick brown fox jumps over the lazy dog.
+      >
+      IMGRESOURCEFLAGS 3
+    >
+    <ITEM
+      POSITION 5
+      SNAPOFFS 0
+      LENGTH 4.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4810CF21-09A1-914E-910A-8AF13D699B8D}
+      IID 45
+      <NOTES
+        |P02
+        |Please confirm your appointment for Tuesday at 3 pm.
+      >
+      IMGRESOURCEFLAGS 3
+    >
+    <ITEM
+      POSITION 10
+      SNAPOFFS 0
+      LENGTH 4.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {E44BB2C4-3F0D-4643-B295-F13B7DFA308C}
+      IID 51
+      <NOTES
+        |P03
+        |She sells sea shells by the sea shore.
+      >
+      IMGRESOURCEFLAGS 3
+    >
+  >
+  <TRACK {C71BDE47-2D75-1444-86FD-2EB076E81449}
+    NAME "REF · reference"
+    PEAKCOL 24474997
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 197 0 1 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {C71BDE47-2D75-1444-86FD-2EB076E81449}
+    PERF 0
+    LAYOUTS Review ""
+    <EXT
+      InferenceReview_role ref
+    >
+    MIDIOUT -1 -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {11540FD1-1D83-8C48-A093-047A66DB1004}
+      IID 35
+      NAME ref_p1
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7F0C2F9B-6314-5848-8C90-762977044DED}
+      <SOURCE WAVE
+        FILE "Media/ref_p1.wav"
+      >
+    >
+    <ITEM
+      POSITION 5
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4C3D8105-FB40-894C-9E85-636C5024A0CE}
+      IID 41
+      NAME ref_p2
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EC6C8F10-3542-3141-8620-97E4E811B74B}
+      <SOURCE WAVE
+        FILE "Media/ref_p2.wav"
+      >
+    >
+    <ITEM
+      POSITION 10
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4263F97B-0626-5241-9DAA-FF4B87988B21}
+      IID 47
+      NAME ref_p3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {4DF384F2-0595-9A43-A710-6D4E6E1D1965}
+      <SOURCE WAVE
+        FILE "Media/ref_p3.wav"
+      >
+    >
+  >
+  <TRACK {88A41A69-3DA9-9740-B6D2-2CB24758E430}
+    NAME "A · VITS fine-tune"
+    PEAKCOL 21689584
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    SPACER 1
+    TRACKHEIGHT 197 0 1 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {88A41A69-3DA9-9740-B6D2-2CB24758E430}
+    PERF 0
+    LAYOUTS Review ""
+    <EXT
+      InferenceReview_role config
+    >
+    MIDIOUT -1 -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {3DA35CE8-BC2A-4F45-88B9-74EC8400C7C4}
+      IID 36
+      NAME a_p1
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {02F174E7-97D8-A14A-B8C0-5EBE3755C111}
+      <SOURCE WAVE
+        FILE "Media/a_p1.wav"
+      >
+    >
+    <ITEM
+      POSITION 5
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {803F89C5-8D2B-9F48-A637-AC122E43D71D}
+      IID 42
+      NAME a_p2
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C5C2BA3D-8956-944E-ABBA-7CE62220EE68}
+      <SOURCE WAVE
+        FILE "Media/a_p2.wav"
+      >
+    >
+    <ITEM
+      POSITION 10
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {B70307FA-3D7B-6C4A-A19D-A669940C836E}
+      IID 48
+      NAME a_p3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5289587F-32F6-5642-9BA0-5B9A7396A8FA}
+      <SOURCE WAVE
+        FILE "Media/a_p3.wav"
+      >
+    >
+  >
+  <TRACK {E8363E26-9E88-5543-8653-A81424400CF4}
+    NAME "B · RVC v2"
+    PEAKCOL 32166296
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 2 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 197 0 1 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {E8363E26-9E88-5543-8653-A81424400CF4}
+    PERF 0
+    LAYOUTS Review ""
+    <EXT
+      InferenceReview_role config
+    >
+    MIDIOUT -1 -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {FA89E888-7FD3-CB4B-9ED2-D4287D76D9AC}
+      IID 37
+      NAME b_p1
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {87484284-A0A4-AA4E-8896-6E03391FA4B2}
+      TKM 1.1 "▸ metallic s · 0.80 s" 17368839 0
+      TKM 1.9 ◂ 17368839 0
+      <SOURCE WAVE
+        FILE "Media/b_p1.wav"
+      >
+    >
+    <ITEM
+      POSITION 5
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {2E49843A-7B8D-2A41-A02E-3B04E155FFA3}
+      IID 43
+      NAME b_p2
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {60F9517A-66C0-124F-9BD4-891F3B5DA05F}
+      <SOURCE WAVE
+        FILE "Media/b_p2.wav"
+      >
+    >
+    <ITEM
+      POSITION 10
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {75D93DA8-7091-4540-8DE2-7F4C5D8C46A8}
+      IID 49
+      NAME b_p3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B32FFA9F-75B5-6348-81BA-13117EB30B0B}
+      <SOURCE WAVE
+        FILE "Media/b_p3.wav"
+      >
+    >
+  >
+  <TRACK {258C4A81-232B-0C40-99EA-2628CE29A7B6}
+    NAME "C · baseline TTS"
+    PEAKCOL 20673780
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 197 0 1 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {258C4A81-232B-0C40-99EA-2628CE29A7B6}
+    PERF 0
+    LAYOUTS Review ""
+    <EXT
+      InferenceReview_role config
+    >
+    MIDIOUT -1 -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1E5AF447-D1A6-7F4B-9C83-34F43897AFAD}
+      IID 38
+      NAME c_p1
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FF07590A-ECF6-804A-83EB-7F9810A1A9E5}
+      <SOURCE WAVE
+        FILE "Media/c_p1.wav"
+      >
+    >
+    <ITEM
+      POSITION 5
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {0724B7F4-174C-0040-A1CC-D4B419AB25E6}
+      IID 44
+      NAME c_p2
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5D531492-24A9-5341-83C5-0A165B8425EF}
+      TKM 1.6 "word dropped" 33554431 0
+      <SOURCE WAVE
+        FILE "Media/c_p2.wav"
+      >
+    >
+    <ITEM
+      POSITION 10
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {76B1B8E4-6701-134D-9C49-9308C5A0ABA2}
+      IID 50
+      NAME c_p3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CDB6EE29-D58B-6540-9B25-972A42B2AD80}
+      <SOURCE WAVE
+        FILE "Media/c_p3.wav"
+      >
+    >
+  >
+  <TRACK {1AB06C88-52D8-7B4B-ACC9-215044D4C404}
+    NAME FINDINGS
+    PEAKCOL 20673780
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 139 0 1 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {1AB06C88-52D8-7B4B-ACC9-215044D4C404}
+    PERF 0
+    LAYOUTS "Review Note" ""
+    <EXT
+      InferenceReview_role findings
+    >
+    MIDIOUT -1 -1
+    MAINSEND 0 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 4.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {48BABC23-2C80-2446-93AE-1FA4949BC119}
+      IID 40
+      <NOTES
+        |B: metallic 's'; A closest to REF
+      >
+      IMGRESOURCEFLAGS 3
+    >
+    <ITEM
+      POSITION 5
+      SNAPOFFS 0
+      LENGTH 4.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C218DA1E-A888-794D-95B7-0572EC13BE39}
+      IID 46
+      <NOTES
+        |C drops the final word; A/B similar
+      >
+      IMGRESOURCEFLAGS 3
+    >
+    <ITEM
+      POSITION 10
+      SNAPOFFS 0
+      LENGTH 4.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0 0 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4F14B9A7-6BCC-FF46-B756-09A5160A37F7}
+      IID 52
+      <NOTES
+        |A best prosody; B slightly fast
+      >
+      IMGRESOURCEFLAGS 3
+    >
+  >
+  <EXTSTATE
+    <INFERENCEREVIEW
+      ACTIVE {E8363E26-9E88-5543-8653-A81424400CF4}
+      LM_MAX_BOOST 12
+      LM_MODE ref
+      LM_TARGET -23
+      PREVIOUS {88A41A69-3DA9-9740-B6D2-2CB24758E430}
+    >
+  >
+>

@@ -17,6 +17,10 @@ ruler lane 1, a "Round 1" region in lane 2. B is playing (name lit), with a dura
 
 ![The two kit toolbars: Session and Annotate buttons on toolbar 16, Playback and Output buttons on toolbar 15](docs/images/toolbars.png)
 
+**New here? Open the demo.** `demo/Inference Review Demo/Inference Review Demo.RPP` is the session above, ready
+to play, and **[docs/TUTORIAL.md](docs/TUTORIAL.md)** walks through it step by step (safe playback, A/B, crossfader,
+level matching, annotating, export) in about 15 minutes.
+
 ## Install from release (teammates)
 
 1. Go to the repository's **Releases** page and download `inference-review-and-presentation-<version>.zip`.
@@ -27,6 +31,8 @@ ruler lane 1, a "Round 1" region in lane 2. B is playing (name lit), with a dura
 | `Inference_Review_and_Presentation.ReaperThemeZip` | The theme. Based on Cockos Default 7.0 (LGPL), adds two track panel layouts: **Review** and **Review Note**. |
 | `Scripts/Inference Review and Presentation/` | 19 Lua scripts, `lib/` and `icons/` (keep the folder together). |
 | `README.md`, `CHANGELOG.md`, `VERSION`, `LICENSE.md`, `LICENSE-LGPL-2.1.txt` | This guide, what changed, licences. |
+| `demo/Inference Review Demo/` | Demo project + its audio (made-up test sound). Open the `.RPP`. |
+| `docs/TUTORIAL.md`, `docs/images/` | Step-by-step tutorial on the demo; pictures. |
 
 3. Follow **Install (once per computer)** below.
 
@@ -55,7 +61,8 @@ Repository layout:
 | `icons/` | Toolbar button images (100 %, `150/`, `200/`), made by `tools/make_icons.py`. |
 | `tools/` | `build.py` (makes the release zip), `set_version.py`, `make_icons.py`. |
 | `dev/` | Test bridge into a running REAPER (not shipped). |
-| `docs/` | `PLAN.md` (roadmap / checklist). |
+| `docs/` | `TUTORIAL.md` (walk-through of the demo), `PLAN.md` (roadmap / checklist), `images/`. |
+| `demo/` | Demo review session (`.RPP` + `Media/`). |
 
 ## Install (once per computer)
 

@@ -9,13 +9,21 @@ if not T.check_reaper() then return end
 
 local proj = 0
 local s, e = T.time_range()
+-- next prompt number: count prompt regions only (ruler lane 1), not lane-2 regions like rounds or sections
 local count = 0
-local i = 0
-while true do
-  local rv, isrgn = reaper.EnumProjectMarkers(i)
-  if rv == 0 then break end
-  if isrgn then count = count + 1 end
-  i = i + 1
+if reaper.APIExists("GetRegionOrMarker") then
+  for k = 0, reaper.GetNumRegionsOrMarkers(0) - 1 do
+    local m = reaper.GetRegionOrMarker(0, k, "")
+    if reaper.GetRegionOrMarkerInfo_Value(0, m, "B_ISREGION") == 1 and reaper.GetRegionOrMarkerInfo_Value(0, m, "I_LANENUMBER") == 0 then count = count + 1 end
+  end
+else
+  local i = 0
+  while true do
+    local rv, isrgn = reaper.EnumProjectMarkers(i)
+    if rv == 0 then break end
+    if isrgn then count = count + 1 end
+    i = i + 1
+  end
 end
 local def = string.format("P%02d", count + 1)
 local ok, csv = reaper.GetUserInputs("Inference Review and Presentation - Add prompt", 2, "Region name,Prompt text,extrawidth=320", def .. ",")

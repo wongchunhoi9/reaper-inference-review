@@ -5,6 +5,12 @@ what teammates must redo after updating (re-import the toolbar, re-assign shortc
 
 ## 1.1.0 (2026-10-28)
 
+Added to the release after publishing (same scripts and theme otherwise):
+- **Demo project** `demo/Inference Review Demo/` and **tutorial** `docs/TUTORIAL.md`; README screenshots.
+- Fix: **+ Prompt** suggests the next prompt number counting prompt regions only (lane-2 regions were counted too).
+- Fix: folders inside the release zip now unzip with normal permissions (before, some unzip tools made folders
+  that couldn't be opened). Affected the first 1.0.0 / 1.1.0 zips.
+
 Playback tools (toolbar 15, yellow):
 - **Swap & replay**: switch to the other config and play again from where playback started.
 - **A/B window**: live "A = heard before / B = playing now" read-out with an A ⇄ B equal-power crossfader

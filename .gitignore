@@ -29,3 +29,8 @@ _src/
 Inference Review and Presentation Kit/
 *.ReaperMenu
 __pycache__/
+
+# REAPER peak caches (rebuilt automatically)
+*.reapeaks
+# ...but keep the demo project
+!demo/**/*.RPP
