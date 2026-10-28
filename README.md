@@ -8,6 +8,15 @@ no extensions needed.
 Version: see `VERSION` and `CHANGELOG.md`. Press **About** on the toolbar to see which version is installed and whether
 the loaded theme matches it.
 
+![A review session: PROMPT lane with the prompt text, REF and configs A, B, C with large names, FINDINGS lane with notes, prompt regions P01-P03 in ruler lane 1 and "Round 1" in lane 2](docs/images/review-layout.png)
+
+*A review session made with **Initiate session**: PROMPT (prompt text per region), REF and configs A–C
+(**Review** layout: number, large name, fader, meter, M/S), FINDINGS (notes). Prompt regions P01–P03 sit in
+ruler lane 1, a "Round 1" region in lane 2. B is playing (name lit), with a duration take marker
+(`▸ metallic s · 0.80 s … ◂`); C has a point marker.*
+
+![The two kit toolbars: Session and Annotate buttons on toolbar 16, Playback and Output buttons on toolbar 15](docs/images/toolbars.png)
+
 ## Install from release (teammates)
 
 1. Go to the repository's **Releases** page and download `inference-review-and-presentation-<version>.zip`.

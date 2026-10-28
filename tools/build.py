@@ -6,7 +6,7 @@
 #       inference-review-and-presentation-<version>/
 #           Inference_Review_and_Presentation.ReaperThemeZip
 #           Scripts/Inference Review and Presentation/   (scripts, lib/, icons/)
-#           README.md  CHANGELOG.md  VERSION  LICENSE.md  LICENSE-LGPL-2.1.txt
+#           README.md  CHANGELOG.md  VERSION  LICENSE.md  LICENSE-LGPL-2.1.txt  docs/images/
 # The version comes from the VERSION file (and must match the lib and theme; see tools/set_version.py).
 import os, sys, zipfile
 
@@ -56,6 +56,7 @@ with zipfile.ZipFile(kit_zip, "w", zipfile.ZIP_DEFLATED) as z:
     z.writestr(zipfile.ZipInfo(NAME + "/Scripts/"), "")
     add_tree(z, os.path.join(ROOT, "scripts"), sdest)
     add_tree(z, os.path.join(ROOT, "icons"), sdest + "/icons")
+    add_tree(z, os.path.join(ROOT, "docs", "images"), NAME + "/docs/images")  # pictures the README shows
     for f in ("README.md", "CHANGELOG.md", "VERSION", "LICENSE.md"):
         z.write(os.path.join(ROOT, f), NAME + "/" + f)
     z.write(os.path.join(ROOT, "theme", "LICENSE-LGPL-2.1.txt"), NAME + "/LICENSE-LGPL-2.1.txt")
