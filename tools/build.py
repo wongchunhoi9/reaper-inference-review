@@ -7,13 +7,20 @@
 #           Inference_Review_and_Presentation.ReaperThemeZip
 #           Scripts/Inference Review and Presentation/   (scripts, lib/, icons/)
 #           README.md  CHANGELOG.md  VERSION  LICENSE.md  LICENSE-LGPL-2.1.txt
-# The version comes from the VERSION file at the top of the repo.
-import os, zipfile
+# The version comes from the VERSION file (and must match the lib and theme; see tools/set_version.py).
+import os, sys, zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 THEME = "Inference_Review_and_Presentation"
 SCRIPTS = "Inference Review and Presentation"
 VERSION = open(os.path.join(ROOT, "VERSION")).read().strip()
+
+# The version lives in three places; stop if they disagree (fix with: python3 tools/set_version.py X.Y.Z)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from set_version import read_versions
+found = read_versions()
+if len(set(found.values())) != 1:
+    sys.exit("Version mismatch, nothing built: " + str(found) + "\nRun: python3 tools/set_version.py " + VERSION)
 NAME = "inference-review-and-presentation-" + VERSION
 DIST = os.path.join(ROOT, "dist")
 os.makedirs(DIST, exist_ok=True)

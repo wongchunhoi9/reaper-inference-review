@@ -10,6 +10,7 @@
 -- Needs: the kit scripts loaded in the action list.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 -- One row per button: script name (after "Inference Review and Presentation - "), button label, icon key,
 -- what it does, what it needs. The tooltip is built from these (REAPER shows the item text as tooltip on image buttons).
@@ -70,6 +71,9 @@ local toolbars = {
       { "Theme settings", "Settings", "settings",
         "Sliders for track name size, name width and compact height.",
         "the Inference_Review_and_Presentation theme active" },
+      { "About", "About", "about",
+        "Shows the kit version, the theme version actually loaded and the REAPER version, with warnings.",
+        "nothing" },
     } },
 }
 
@@ -141,4 +145,4 @@ T.msg("Toolbar files written:\n" .. table.concat(written, "\n") .. "\n\nIcons in
   (#missing > 0 and ("\n\nNot in the action list yet (load them first):\n- " .. table.concat(missing, "\n- ")) or "") ..
   "\n\nImport: Options > Customize menus/toolbars > pick 'Floating toolbar 16' > Import/Export > Import > the 'toolbar 16' file." ..
   "\nThen pick 'Floating toolbar 15' and import the 'toolbar 15' file. OK." ..
-  "\nShow them: View > Toolbars > Toolbar 16 and Toolbar 15 (right-click a toolbar to dock it; dock 15 under 16).")
+  "\nShow them: in the action list run 'Toolbar: Open/close toolbar 16' and '... toolbar 15' (right-click a toolbar to dock it; dock 15 under 16).")

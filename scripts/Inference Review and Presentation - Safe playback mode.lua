@@ -9,6 +9,7 @@
 -- Run again (or press the button) to turn it off.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 if reaper.set_action_options then reaper.set_action_options(1 | 4) end -- re-run = turn off; set toggle state
 local _, _, sec, cmd = reaper.get_action_context()

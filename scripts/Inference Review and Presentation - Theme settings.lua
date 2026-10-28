@@ -5,6 +5,7 @@
 -- Changes apply live and are saved with the theme settings.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 if reaper.set_action_options then reaper.set_action_options(1 | 2) end -- re-running closes the open window
 

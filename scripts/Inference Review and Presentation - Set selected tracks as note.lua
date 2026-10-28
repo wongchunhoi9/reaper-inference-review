@@ -4,6 +4,7 @@
 -- Note lane: name only (Review Note layout), no audio output (master send off, no hardware outs).
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local role = "note"
 local n = reaper.CountSelectedTracks(0)

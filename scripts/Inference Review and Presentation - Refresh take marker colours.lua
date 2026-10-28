@@ -5,6 +5,7 @@
 -- black text on light items, white on dark ones. Run after changing track or item colours.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local n = 0
 reaper.Undo_BeginBlock()

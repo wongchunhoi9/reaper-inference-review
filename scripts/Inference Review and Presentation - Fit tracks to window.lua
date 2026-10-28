@@ -5,6 +5,7 @@
 -- and locks their heights. Run again after resizing the window or adding tracks.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local proj = 0
 local list = T.tracks_with_roles(proj)

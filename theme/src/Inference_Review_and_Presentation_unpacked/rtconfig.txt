@@ -720,7 +720,9 @@ endLayout
 ;   "Review Note"  name only, for Prompt / Findings lanes
 ; Sizes are points at 100%; Scale multiplies them for the 150% / 200% layouts.
 ; Brand palette: yellow F0F44A, blue 98D1EA, grey 757575, orange F4743B, black 070709.
+; Kit version 1.1.0 (set with tools/set_version.py; the About script reads rvKitVersion to check the loaded theme)
 
+define_parameter rvKitVersion 				'Review - Kit version 1.1.0 (info only)' 10100 10100 10100
 define_parameter rvNameSize 					'Review - Track Name Font Size (1-5)' 3 1 5
 define_parameter rvLabelLength 				'Review - Track Name Width' 402 120 800
 define_parameter rvRow2MinH 					'Review - Hide Row 2 Below Track Height' 60 30 120

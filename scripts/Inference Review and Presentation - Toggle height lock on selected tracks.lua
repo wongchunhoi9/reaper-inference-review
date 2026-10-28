@@ -3,6 +3,7 @@
 -- Needs: selected track(s).
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local n = reaper.CountSelectedTracks(0)
 if n == 0 then T.msg("Select one or more tracks first.") return end

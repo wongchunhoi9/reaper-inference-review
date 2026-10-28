@@ -5,7 +5,8 @@ pipelines) in REAPER: large readable track names, note lanes for prompts and fin
 soloing, and a findings export. Works on macOS and Windows, REAPER 7 (7.62+ for region lanes),
 no extensions needed.
 
-Version: see `VERSION` and `CHANGELOG.md`.
+Version: see `VERSION` and `CHANGELOG.md`. Press **About** on the toolbar to see which version is installed and whether
+the loaded theme matches it.
 
 ## Install from release (teammates)
 
@@ -32,6 +33,8 @@ This writes `dist/inference-review-and-presentation-<version>.zip` (the same zip
 `dist/Inference_Review_and_Presentation.ReaperThemeZip`. Unzip the kit zip and follow the steps below,
 or use the dev bridge (`dev/`, see `CLAUDE.md`) to install straight from the repo.
 Needs Python 3 (no extra packages; `tools/make_icons.py` needs Pillow only if you redraw the icons).
+To change the version: `python3 tools/set_version.py 1.2.0` (updates `VERSION`, the script library and the theme;
+the build stops if they disagree), then add a `CHANGELOG.md` entry.
 
 Repository layout:
 
@@ -41,7 +44,7 @@ Repository layout:
 | `theme/upstream/` | Untouched Cockos Default 7.0, for comparison. Never edited. |
 | `scripts/` | The Lua scripts and `lib/`. Installed as `REAPER/Scripts/Inference Review and Presentation/`. |
 | `icons/` | Toolbar button images (100 %, `150/`, `200/`), made by `tools/make_icons.py`. |
-| `tools/` | `build.py` (makes the release zip), `make_icons.py`. |
+| `tools/` | `build.py` (makes the release zip), `set_version.py`, `make_icons.py`. |
 | `dev/` | Test bridge into a running REAPER (not shipped). |
 | `docs/` | `PLAN.md` (roadmap / checklist). |
 
@@ -59,7 +62,8 @@ Repository layout:
    Then **Options > Customize menus/toolbars**: pick **Floating toolbar 16** in the top list,
    **Import/Export > Import**, choose the *toolbar 16* file; pick **Floating toolbar 15**, import the *toolbar 15* file; **OK**.
    (If you already use toolbar 15 or 16 for something else, import into any free floating toolbar instead.)
-   Open them with **View > Toolbars > Toolbar 16** and **Toolbar 15**, and dock 15 under 16 for two tidy rows
+   Open them from the action list: run **Toolbar: Open/close toolbar 16** and **Toolbar: Open/close toolbar 15**
+   and dock 15 under 16 for two tidy rows
    (right-click a toolbar > Dock). REAPER toolbars can't force a line break, which is why the kit uses two.
    **Hover a button** for its tooltip: what it does, what it needs, and the script name.
    Button colours: **grey** = session setup, **blue** = prompts / notes / markers, **yellow** = playback,
@@ -116,6 +120,7 @@ Script names start with `Inference Review and Presentation - `; search the actio
 | **Toolbar 15: Output** (orange) | | | | |
 | Export findings | Export findings | Markdown report + CSV of take markers (start, end, duration) next to the project file. | saved project | — |
 | Settings | Theme settings | Sliders for track name size, name width and compact height. | the Inference_Review_and_Presentation theme active | — |
+| About | About | Kit version, theme version actually loaded, REAPER version; warns if REAPER is older than 7.62, the theme isn't active, or the theme is from another kit version. | nothing | — |
 
 Not on the toolbars: **Lock height of all tracks**, **Unlock height of all tracks**, **Create toolbar file**.
 
@@ -145,7 +150,8 @@ These only affect the Review / Review Note layouts.
 
 ## Notes and limits
 
-* **Regions in two lanes** need REAPER **7.62 or later**; tested on 7.83.
+* **Regions in two lanes** need REAPER **7.62 or later**; tested on 7.83. On REAPER 7.0–7.61 the kit still works:
+  scripts show a one-time note, prompts go in one ruler lane and **+ Region lane 2** is off. REAPER 6 is not supported.
 * **Take marker labels** are text only; REAPER does not draw a filled box behind them. The
   marker script picks black or white text for contrast instead.
 * **Take markers have no length** in REAPER (checked up to 7.83), so a duration is a pair of markers (`▸` start, `◂` end).

@@ -1,6 +1,7 @@
 -- Inference Review and Presentation - Unlock height of all tracks
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local on = false
 reaper.Undo_BeginBlock()

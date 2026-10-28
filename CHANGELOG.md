@@ -13,11 +13,15 @@ what teammates must redo after updating (re-import the toolbar, re-assign shortc
 - Button renames: Build session → **Initiate session**, Set config → **Set config lane**,
   + Prompt → **+ Prompt & Region lane 1**, + Marker → **+ Take marker**, Marker colour → **Take marker colour reset**.
 - Script renamed: *Build review session* → **Initiate session** (new action ID).
+- **About** button (toolbar 15, orange): kit version, theme version actually loaded, REAPER version, with warnings.
+- **Version checks**: every script checks the REAPER version first. Below 7.0 it stops with an explanation; on
+  7.0–7.61 it shows a one-time note (no region lanes) and carries on; *Add region lane 2* needs 7.62.
+- The theme now carries the kit version (theme parameter "Review - Kit version", shown under Theme adjuster parameters).
 
 **After updating:** in the action list, remove the old "Inference Review and Presentation - Build review session"
-action and load the new "Initiate session" script. Run *Create toolbar file*, then import the *toolbar 16* file
+action and load the new "Initiate session" and "About" scripts. Run *Create toolbar file*, then import the *toolbar 16* file
 into Floating toolbar 16 and the *toolbar 15* file into Floating toolbar 15. Re-assign any shortcut you had
-on "Build review session".
+on "Build review session". Double-click the new theme zip so the theme version matches (About checks this).
 
 ## 1.0.0 (2026-10-28)
 

@@ -4,6 +4,7 @@
 -- Switches between the current and the previously auditioned config (exclusive solo). Playback keeps running.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local cur, prev = T.get_active(), T.get_previous()
 local list = T.config_tracks(0)

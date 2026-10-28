@@ -28,3 +28,4 @@ build/
 _src/
 Inference Review and Presentation Kit/
 *.ReaperMenu
+__pycache__/

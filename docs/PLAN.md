@@ -40,6 +40,7 @@ Based on Cockos Default 7.0 (Stash download, LGPL v2+). Source in `theme/src/`, 
 | A-B swap | playback | done |
 | Export findings (.md + .csv) | output | done |
 | Theme settings (slider window) | output | done |
+| About (kit / theme / REAPER versions + warnings) | output | done |
 | Create toolbar file (+ coloured icons) | output | done |
 | lib/inference_review_lib.lua (palette, roles, helpers) | shared | done |
 
@@ -103,13 +104,15 @@ Based on Cockos Default 7.0 (Stash download, LGPL v2+). Source in `theme/src/`, 
 
 ## Phase 2: Versioning and compatibility
 
-- [ ] One version number for the whole kit (theme + scripts + toolbar), semantic: `1.0.0`.
+- [x] One version number for the whole kit (theme + scripts + toolbar), semantic: `1.0.0`.
       Stored in `VERSION` and in `lib/inference_review_lib.lua` (`T.VERSION`, `T.MIN_REAPER = "7.62"`).
-- [ ] Theme carries the same version: a define_parameter `rvKitVersion` (read-only display) + a comment line in rtconfig.
-- [ ] **About / check** script + toolbar button: shows kit version, theme version actually loaded,
+      Done: `tools/set_version.py X.Y.Z` writes all three (VERSION, lib, theme); build.py stops if they differ.
+      Lib has `T.MIN_REAPER = "7.0"` (hard stop) and `T.FEATURE_REAPER = "7.62"` (region lanes; one-time note, lane-2 script stops).
+- [x] Theme carries the same version: a define_parameter `rvKitVersion` (read-only display) + a comment line in rtconfig.
+- [x] **About / check** script + toolbar button: shows kit version, theme version actually loaded,
       REAPER version, and warns if REAPER < 7.62 (region lanes) or the theme is not active / out of date.
-- [ ] Every script checks `T.MIN_REAPER` on start and explains what will not work instead of failing.
-- [ ] `CHANGELOG.md` in the kit (what changed, what teammates must redo: re-import toolbar, re-assign keys).
+- [x] Every script checks `T.MIN_REAPER` on start and explains what will not work instead of failing.
+- [x] `CHANGELOG.md` in the kit (what changed, what teammates must redo: re-import toolbar, re-assign keys).
 - [ ] Windows test pass (Parsec machine): install from README only, note any differences.
 
 ## Phase 3: Playback tools

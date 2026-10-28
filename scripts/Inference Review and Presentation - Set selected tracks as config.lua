@@ -4,6 +4,7 @@
 -- Config track: Review layout with fader, meter, M/S; normal output.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local role = "config"
 local n = reaper.CountSelectedTracks(0)

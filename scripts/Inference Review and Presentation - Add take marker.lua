@@ -7,6 +7,7 @@
 -- Text colour is black on light items and white on dark ones.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local ts, te = reaper.GetSet_LoopTimeRange(false, false, 0, 0, false)
 local has_range = te > ts

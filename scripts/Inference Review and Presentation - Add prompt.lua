@@ -5,6 +5,7 @@
 -- and adds empty note items (stretched text) on the PROMPT and FINDINGS lanes.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local proj = 0
 local s, e = T.time_range()

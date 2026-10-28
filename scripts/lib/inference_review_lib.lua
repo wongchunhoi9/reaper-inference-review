@@ -4,6 +4,11 @@
 local T = {}
 T.EXT = "InferenceReview"
 
+-- Kit version (theme + scripts + toolbar share one number). Change it with: python3 tools/set_version.py X.Y.Z
+T.VERSION = "1.1.0"
+T.MIN_REAPER = "7.0"        -- below this the kit does not run (track layouts, height lock)
+T.FEATURE_REAPER = "7.62"   -- below this: no region lanes (prompts all land in one ruler lane, Add region lane 2 is off)
+
 -- Brand palette (from the logo)
 T.palette = {
   yellow = 0xF0F44A, blue = 0x98D1EA, grey = 0x757575, orange = 0xF4743B, black = 0x070709, white = 0xFFFFFF,
@@ -190,6 +195,36 @@ function T.set_active(tr, keep_selection)
 end
 
 function T.msg(s) reaper.ShowMessageBox(s, "Inference Review and Presentation", 0) end
+
+-- REAPER version as a number: "7.83/macOS-arm64" -> 7.83
+function T.reaper_version()
+  return tonumber(reaper.GetAppVersion():match("^(%d+%.%d+)")) or 0
+end
+
+-- Every script calls this first. Returns false (after explaining) when the script can't run.
+-- needs_lanes = true for scripts that only make sense with region lanes (REAPER 7.62+).
+-- On 7.0 - 7.61 other scripts still run; a one-time note (per REAPER session) says what won't work.
+function T.check_reaper(needs_lanes)
+  local v = T.reaper_version()
+  local have = reaper.GetAppVersion():match("^[^/]+")
+  if v < tonumber(T.MIN_REAPER) then
+    T.msg("This kit needs REAPER " .. T.MIN_REAPER .. " or later. You have " .. have .. ".\nPlease update REAPER (reaper.fm).")
+    return false
+  end
+  if v < tonumber(T.FEATURE_REAPER) then
+    if needs_lanes then
+      T.msg("This script needs region lanes, added in REAPER " .. T.FEATURE_REAPER .. ". You have " .. have .. ".\nPlease update REAPER.")
+      return false
+    end
+    if reaper.GetExtState(T.EXT, "old_reaper_warned") == "" then
+      reaper.SetExtState(T.EXT, "old_reaper_warned", "1", false)
+      T.msg("REAPER " .. have .. " is older than " .. T.FEATURE_REAPER .. ". The kit works, except:\n" ..
+        "- prompt regions all go in one ruler lane (no region lanes);\n- '+ Region lane 2' is off.\n\n" ..
+        "Update REAPER to get these. (This note shows once per REAPER session.)")
+    end
+  end
+  return true
+end
 
 function T.time_range()
   local s, e = reaper.GetSet_LoopTimeRange(false, false, 0, 0, false)

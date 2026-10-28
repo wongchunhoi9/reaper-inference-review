@@ -5,6 +5,7 @@
 -- Prompt regions from 'Add prompt' stay in lane 1.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper(true) then return end
 
 local s, e, has = T.time_range()
 if not has then T.msg("Make a time selection first.") return end

@@ -5,6 +5,7 @@
 -- (or 5 s at the edit cursor), then opens its notes window so you can type.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local tr = reaper.GetSelectedTrack(0, 0)
 if not tr then T.msg("Select a track first (for example FINDINGS).") return end

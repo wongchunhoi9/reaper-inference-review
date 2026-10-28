@@ -5,6 +5,7 @@
 -- laid out and height-locked. Run once on an empty project (or at the end of one).
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
+if not T.check_reaper() then return end
 
 local ok, csv = reaper.GetUserInputs("Inference Review and Presentation - Initiate session", 2,
   "Config tracks (not counting REF),Config names (separate with ;),extrawidth=300", "7,")

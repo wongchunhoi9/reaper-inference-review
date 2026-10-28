@@ -39,6 +39,7 @@ BUTTONS = [  # file key, label, group, toggle?
   ("abswap", "A/B swap", "play", False),
   ("export", "Export findings", "output", False),
   ("settings", "Settings", "output", False),
+  ("about", "About", "output", False),
 ]
 OFF_BG, OFF_HOVER, OFF_TEXT = (58, 58, 62), (78, 78, 84), (170, 170, 170)  # toggle OFF: dark grey button, grey text
 def mix(c, t, a): return tuple(int(round(c[i] + (t[i]-c[i])*a)) for i in range(3))
