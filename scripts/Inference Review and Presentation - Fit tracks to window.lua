@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Fit tracks to window
+-- Toolbar button: Fit to window · Resizes all review lanes to fill the arrange view and locks their heights.
+-- Needs: nothing (run again after resizing the window).
 -- Sizes PROMPT / config / FINDINGS lanes to fill the arrange view (proportions 70 : 85 each : 60)
 -- and locks their heights. Run again after resizing the window or adding tracks.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
@@ -6,7 +8,7 @@ local T = dofile(dir .. "lib/inference_review_lib.lua")
 
 local proj = 0
 local list = T.tracks_with_roles(proj)
-if #list == 0 then T.msg("No Inference Review and Presentation tracks found.\nRun 'Inference Review and Presentation - Build review session' or 'Set selected tracks as config / note lane' first.") return end
+if #list == 0 then T.msg("No Inference Review and Presentation tracks found.\nRun 'Inference Review and Presentation - Initiate session' or 'Set selected tracks as config / note lane' first.") return end
 local H = T.arrange_height()
 if not H or H < 100 then T.msg("Could not read the window height.") return end
 

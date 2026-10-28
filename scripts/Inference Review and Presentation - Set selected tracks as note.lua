@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Set selected tracks as note
+-- Toolbar button: Set note lane · Makes tracks note lanes: name only, no audio output.
+-- Needs: selected track(s).
 -- Note lane: name only (Review Note layout), no audio output (master send off, no hardware outs).
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")

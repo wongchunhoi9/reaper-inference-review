@@ -24,8 +24,8 @@ Based on Cockos Default 7.0 (Stash download, LGPL v2+). Source in `theme/src/`, 
 ### Scripts: `scripts/` (installed copy: REAPER/Scripts/Inference Review and Presentation/)
 | Script | Group | State |
 |---|---|---|
-| Build review session | setup | done, rename planned (Initiate session) |
-| Set selected tracks as config | setup | done, rename planned (Set config lane) |
+| Initiate session (was Build review session) | setup | done |
+| Set selected tracks as config (button: Set config lane) | setup | done |
 | Set selected tracks as note | setup | done |
 | Fit tracks to window | setup | done |
 | Toggle height lock on selected tracks | setup | done |
@@ -46,7 +46,7 @@ Based on Cockos Default 7.0 (Stash download, LGPL v2+). Source in `theme/src/`, 
 ### Other
 | Item | State |
 |---|---|
-| Toolbar 16 "Inference Review and Presentation" with coloured image buttons (icons/ 100/150/200%) | done |
+| Toolbars 16 (Session, Annotate) + 15 (Playback, Output), coloured image buttons with tooltips (icons/ 100/150/200%) | done |
 | README.md (install + use) | done |
 | Dev bridge for testing (`dev/`) | dev only, not shipped |
 | Layout mockup artifact (claude.ai) | reference |
@@ -75,29 +75,31 @@ Based on Cockos Default 7.0 (Stash download, LGPL v2+). Source in `theme/src/`, 
 
 ## Phase 1: Toolbar and naming (next)
 
-- [ ] **Tooltips** on every button: one-line description + the original script name, plus what it needs
+- [x] **Tooltips** on every button: one-line description + the original script name, plus what it needs
       (edit cursor, time selection, selected track, selected item). REAPER shows the toolbar item label as
       the tooltip when the button uses an image icon, so the label text in the .ReaperMenu becomes:
       `+ Take marker · Point at edit cursor, or duration over time selection. Needs: item under cursor on selected track. [Inference Review and Presentation - Add take marker]`
       Also write the same text into each script header and the README table so hotkeys are easy to set.
-- [ ] **Safe playback ON/OFF clearly visible**: two distinct icon states.
+- [x] **Safe playback ON/OFF clearly visible**: two distinct icon states.
       Proposal: OFF = dark grey button, grey text "Safe playback OFF"; ON = solid yellow, black text "Safe playback ON".
       (REAPER uses icon frame 3 for toggle-on; frames are normal / hover / on.)
-- [ ] Renames (label and, where noted, script file):
-  - [ ] "Build session" -> **Initiate session** (script: Inference Review and Presentation - Initiate session)
-  - [ ] "Set config" -> **Set config lane**
-  - [ ] "Set note lane" stays
-  - [ ] "+ Prompt" -> **+ Prompt & Region lane 1**
-  - [ ] "+ Marker" -> **+ Take marker**
-  - [ ] "Marker colour" -> **Take marker colour reset**
+- [x] Renames (label and, where noted, script file):
+  - [x] "Build session" -> **Initiate session** (script: Inference Review and Presentation - Initiate session)
+  - [x] "Set config" -> **Set config lane**
+  - [x] "Set note lane" stays
+  - [x] "+ Prompt" -> **+ Prompt & Region lane 1**
+  - [x] "+ Marker" -> **+ Take marker**
+  - [x] "Marker colour" -> **Take marker colour reset**
   - Renaming a script file changes its action ID: re-run Create toolbar file and re-import afterwards;
     teammates' custom shortcuts to the old names must be re-assigned (note this in the changelog).
-- [ ] **Regroup the toolbar** (proposal, left to right):
+- [x] **Regroup the toolbar** (proposal, left to right):
   1. Session (grey): Initiate session · Set config lane · Set note lane · Fit to window · Lock height
   2. Annotate (blue): + Prompt & Region lane 1 · + Region lane 2 · + Note · + Take marker · Take marker colour reset
   3. Playback (yellow): Safe playback ON/OFF · ◀ Previous · Next ▶ · A/B swap · Swap & replay · A/B crossfader · (1-9 later)
   4. Output (orange): Export findings · Settings · About/version
   Two rows: groups 1+2 on row 1, groups 3+4 on row 2, separators between groups.
+  Done 2026-10-28 as **two toolbars** (REAPER can't force a line break): Floating toolbar 16 = groups 1+2,
+  Floating toolbar 15 = groups 3+4 (Swap & replay, crossfader, About come in later phases).
 
 ## Phase 2: Versioning and compatibility
 

@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Theme settings
+-- Toolbar button: Settings · Sliders for track name size, name width and compact height.
+-- Needs: the Inference_Review_and_Presentation theme active.
 -- Sliders for the review track panel (Review and Review Note layouts). Needs the Inference_Review_and_Presentation theme active.
 -- Changes apply live and are saved with the theme settings.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")

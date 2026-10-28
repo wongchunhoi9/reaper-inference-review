@@ -53,12 +53,16 @@ Repository layout:
    (**Options > Show REAPER resource path in explorer/finder**, then `Scripts`).
    In REAPER: **Actions > Show action list > New action > Load ReaScript**,
    select all the `Inference Review and Presentation - ….lua` files (not `lib`), **Open**.
-3. **Toolbar**: run **Inference Review and Presentation - Create toolbar file**. It installs the coloured button icons
-   and writes `Inference Review and Presentation toolbar.ReaperMenu` next to the scripts, using this computer's action IDs.
-   Then **Options > Customize menus/toolbars**, pick **Floating toolbar 16** in the top list,
-   **Import/Export > Import**, choose that file, **OK**. Open it with **View > Toolbars > Toolbar 16**
-   (drag its edge to widen it, or right-click it to dock it).
-   Button colours: **grey** = setup, **blue** = prompts / notes / markers, **yellow** = playback,
+3. **Toolbars**: run **Inference Review and Presentation - Create toolbar file**. It installs the coloured button icons
+   and writes two files next to the scripts, using this computer's action IDs:
+   `… toolbar 16 (Session, Annotate).ReaperMenu` and `… toolbar 15 (Playback, Output).ReaperMenu`.
+   Then **Options > Customize menus/toolbars**: pick **Floating toolbar 16** in the top list,
+   **Import/Export > Import**, choose the *toolbar 16* file; pick **Floating toolbar 15**, import the *toolbar 15* file; **OK**.
+   (If you already use toolbar 15 or 16 for something else, import into any free floating toolbar instead.)
+   Open them with **View > Toolbars > Toolbar 16** and **Toolbar 15**, and dock 15 under 16 for two tidy rows
+   (right-click a toolbar > Dock). REAPER toolbars can't force a line break, which is why the kit uses two.
+   **Hover a button** for its tooltip: what it does, what it needs, and the script name.
+   Button colours: **grey** = session setup, **blue** = prompts / notes / markers, **yellow** = playback,
    **orange** = export and settings. If the colours look pale, reset
    **Options > Themes > Theme Adjuster / Color Controls** for this theme: its gamma/contrast also tints toolbar icons.
    To turn any other toolbar button into text: right-click it in Customize menus/toolbars >
@@ -68,36 +72,52 @@ Repository layout:
 ## Start a review session
 
 1. Switch to the **Inference_Review_and_Presentation** theme.
-2. New project, run **Inference Review and Presentation - Build review session**. Enter the number of
+2. New project, run **Initiate session** (script *Inference Review and Presentation - Initiate session*). Enter the number of
    configs and, optionally, their names separated by `;`.
    You get PROMPT, REF, configs A, B, C … and FINDINGS, coloured, laid out and
    height-locked, with a spacer under REF.
 3. Drop the rendered audio for each config on its track.
-4. Make a time selection over each prompt's audio and run **Add prompt**: it
+4. Make a time selection over each prompt's audio and press **+ Prompt & Region lane 1**: it
    creates region P01, P02 … and note items on PROMPT and FINDINGS.
 5. Save the project.
 
 ## During the presentation
 
-**Turn on Safe playback first** (yellow outlined button; it lights up when on). While it is on:
+**Turn on Safe playback first**: the button reads *Safe playback OFF* on dark grey and turns solid yellow
+*Safe playback ON*. While it is on:
 
 * only **one** of REF / configs is ever audible (exclusive solo in place), so nothing can play all at once;
 * **click a config's name** to switch to it instantly; playback keeps running at the same position;
 * pressing **S** on another track switches to it; "unsolo all" falls back to the last one instead of opening everything;
 * PROMPT / FINDINGS never make sound.
 
-| Script / button | Suggested key | What it does |
-|---|---|---|
-| Safe playback | `P` | Toggle the mode above. |
-| ◀ Previous / Next ▶ | `[` / `]` | Step through REF → A → B … (lights up the playing name). |
-| A/B swap | `Tab` | Flip between the current and the previously heard config. |
-| + Marker | `M` | No time selection: point marker at the edit cursor. With a time selection: duration marker, `▸ text · 1.25 s` at the start and `◂` at the end. Black text on light items, white on dark. |
-| + Note | `N` | Note item on the selected track over the time selection, opens the notes window. |
-| + Prompt | — | Region P01, P02 … in **ruler lane 1** + note items on PROMPT and FINDINGS. |
-| + Region lane 2 | — | Region over the time selection in **ruler lane 2** (rounds, sections, issues). Needs REAPER 7.62+. |
-| Marker colour | — | Re-picks black/white text for every take marker after you change track or item colours. |
-| Fit to window | `F` | Re-fits all review lanes to the window (after resizing / screen sharing). |
-| Export findings | — | Markdown report + CSV of take markers (start, end, duration) next to the saved project. |
+## All toolbar buttons
+
+Script names start with `Inference Review and Presentation - `; search the action list for them to set shortcuts.
+
+| Button | Script | What it does | Needs | Suggested key |
+|---|---|---|---|---|
+| **Toolbar 16: Session** (grey) | | | | |
+| Initiate session | Initiate session | Adds PROMPT, REF, config lanes and FINDINGS, coloured, laid out and height-locked. | an empty project (asks how many configs) | — |
+| Set config lane | Set selected tracks as config | Makes tracks config lanes: Review layout with fader, meter, M/S and normal output. | selected track(s) | — |
+| Set note lane | Set selected tracks as note | Makes tracks note lanes: name only, no audio output. | selected track(s) | — |
+| Fit to window | Fit tracks to window | Resizes all review lanes to fill the arrange view and locks their heights. | nothing (run again after resizing / screen sharing) | `F` |
+| Lock height | Toggle height lock on selected tracks | Locks or unlocks the height of the selected tracks. | selected track(s) | — |
+| **Toolbar 16: Annotate** (blue) | | | | |
+| + Prompt & Region lane 1 | Add prompt | Region P01, P02 … in **ruler lane 1** plus note items on PROMPT and FINDINGS. | time selection (or uses 5 s at the edit cursor) | — |
+| + Region lane 2 | Add region lane 2 | Region in **ruler lane 2** for rounds, sections or issues. | time selection; REAPER 7.62+ | — |
+| + Note | Add note item | Note item on the selected track, then opens its notes window. | selected track; time selection (or 5 s at the edit cursor) | `N` |
+| + Take marker | Add take marker | No time selection: point marker at the edit cursor. With a time selection: duration pair, `▸ text · 1.25 s` at the start and `◂` at the end. Black text on light items, white on dark. | item under the edit cursor on the selected track (or a selected item) | `M` |
+| Take marker colour reset | Refresh take marker colours | Re-picks black or white text for every take marker after colour changes. | nothing | — |
+| **Toolbar 15: Playback** (yellow) | | | | |
+| Safe playback ON/OFF | Safe playback mode | Toggles the mode above. | nothing (turn it on before presenting) | `P` |
+| ◀ Previous / Next ▶ | Solo previous config / Solo next config | Solos the previous / next lane (REF, A, B …) and lights up its name; playback keeps running. | REF / config lanes | `[` / `]` |
+| A/B swap | A-B swap | Flips between the current and the previously heard config. | two configs heard in this session | `Tab` |
+| **Toolbar 15: Output** (orange) | | | | |
+| Export findings | Export findings | Markdown report + CSV of take markers (start, end, duration) next to the project file. | saved project | — |
+| Settings | Theme settings | Sliders for track name size, name width and compact height. | the Inference_Review_and_Presentation theme active | — |
+
+Not on the toolbars: **Lock height of all tracks**, **Unlock height of all tracks**, **Create toolbar file**.
 
 ## Track roles and layouts
 

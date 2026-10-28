@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Set selected tracks as config
+-- Toolbar button: Set config lane · Makes tracks config lanes: Review layout with fader, meter, M/S and normal output.
+-- Needs: selected track(s).
 -- Config track: Review layout with fader, meter, M/S; normal output.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")

@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Safe playback mode (toggle)
+-- Toolbar button: Safe playback ON/OFF · Toggle (yellow = ON). While ON only one of REF / configs plays; click a name to switch.
+-- Needs: nothing (turn it on before presenting).
 -- While ON (toolbar button lit):
 --  * only ONE of REF / configs is ever audible (exclusive solo in place);
 --  * click a config's name (select it) to switch to it instantly, playback keeps running;

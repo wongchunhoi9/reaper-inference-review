@@ -34,3 +34,12 @@ end
 print("icons copied")
 
 INSTALLED_DIR = dst
+
+-- scripts renamed in later versions: remove the old action and the old installed copy
+local RETIRED = { "Build review session" } -- 1.1.0: now "Initiate session"
+for _, nm in ipairs(RETIRED) do
+  local p = dst .. "Inference Review and Presentation - " .. nm .. ".lua"
+  if reaper.file_exists(p) then
+    print("retired", nm, reaper.AddRemoveReaScript(false, 0, p, true) and "unregistered" or "", os.remove(p) and "removed" or "")
+  end
+end

@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Add region lane 2
+-- Toolbar button: + Region lane 2 · Region in ruler lane 2 for rounds, sections or issues.
+-- Needs: time selection; REAPER 7.62+.
 -- Region over the time selection in the second ruler lane (REAPER 7.62+), e.g. sections, rounds or issues.
 -- Prompt regions from 'Add prompt' stay in lane 1.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")

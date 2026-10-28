@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Add note item
+-- Toolbar button: + Note · Note item on the selected track, then opens its notes window.
+-- Needs: selected track; time selection (or uses 5 s at the edit cursor).
 -- Adds an empty item with stretched note text on the selected track, over the time selection
 -- (or 5 s at the edit cursor), then opens its notes window so you can type.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")

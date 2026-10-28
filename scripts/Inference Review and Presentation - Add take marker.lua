@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Add take marker
+-- Toolbar button: + Take marker · Point marker at the edit cursor, or a duration pair (start / end) over the time selection.
+-- Needs: item under the edit cursor on the selected track (or a selected item); optional time selection.
 -- Point marker: no time selection -> one marker at the edit cursor.
 -- Range marker: with a time selection over the item -> a start marker '▸ text · 1.25 s' and an end marker '◂'.
 -- Works on the selected item under the cursor / time selection, or the item on the selected track.

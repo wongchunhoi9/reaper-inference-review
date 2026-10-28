@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Add prompt
+-- Toolbar button: + Prompt & Region lane 1 · Region P01, P02 ... in ruler lane 1 plus note items on PROMPT and FINDINGS.
+-- Needs: time selection (or uses 5 s at the edit cursor).
 -- Makes a region over the time selection (or 5 s at the edit cursor) named P01, P02 ...
 -- and adds empty note items (stretched text) on the PROMPT and FINDINGS lanes.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")

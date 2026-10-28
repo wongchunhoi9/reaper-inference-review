@@ -1,10 +1,12 @@
--- Inference Review and Presentation - Build review session
+-- Inference Review and Presentation - Initiate session
+-- Toolbar button: Initiate session · Adds PROMPT, REF, config lanes and FINDINGS, coloured, laid out and height-locked.
+-- Needs: an empty project (asks how many configs).
 -- Adds PROMPT, REF, config tracks and FINDINGS to the current project, coloured,
 -- laid out and height-locked. Run once on an empty project (or at the end of one).
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
 
-local ok, csv = reaper.GetUserInputs("Inference Review and Presentation - Build review session", 2,
+local ok, csv = reaper.GetUserInputs("Inference Review and Presentation - Initiate session", 2,
   "Config tracks (not counting REF),Config names (separate with ;),extrawidth=300", "7,")
 if not ok then return end
 local n, names = csv:match("^([^,]*),(.*)$")

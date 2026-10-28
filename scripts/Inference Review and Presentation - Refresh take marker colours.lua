@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Refresh take marker colours
+-- Toolbar button: Take marker colour reset · Re-picks black or white text for every take marker after colour changes.
+-- Needs: nothing.
 -- Re-colours every take marker in the project for contrast with its item:
 -- black text on light items, white on dark ones. Run after changing track or item colours.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")

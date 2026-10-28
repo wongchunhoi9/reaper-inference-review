@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Toggle height lock on selected tracks
+-- Toolbar button: Lock height · Locks or unlocks the height of the selected tracks.
+-- Needs: selected track(s).
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
 

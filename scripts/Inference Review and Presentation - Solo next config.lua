@@ -1,4 +1,6 @@
 -- Inference Review and Presentation - Solo next config
+-- Toolbar button: Next ▶ · Solos the next lane (REF, A, B ...); playback keeps running.
+-- Needs: REF / config lanes.
 -- Steps the solo through REF and the config tracks (next), selecting the soloed track
 -- so its name lights up. Playback keeps running.
 local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
