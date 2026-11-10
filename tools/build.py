@@ -4,6 +4,7 @@
 #   dist/Inference_Review_and_Presentation.ReaperThemeZip     the theme on its own (handy for reloading while testing)
 #   dist/inference-review-and-presentation-<version>.zip     the full kit for teammates:
 #       inference-review-and-presentation-<version>/
+#           Install Inference Review and Presentation.lua    (one-step installer, run from REAPER)
 #           Inference_Review_and_Presentation.ReaperThemeZip
 #           Scripts/Inference Review and Presentation/   (scripts, lib/, icons/)
 #           README.md  CHANGELOG.md  VERSION  LICENSE.md  LICENSE-LGPL-2.1.txt  docs/ (TUTORIAL.md, images/)
@@ -75,7 +76,7 @@ with zipfile.ZipFile(kit_zip, "w", zipfile.ZIP_DEFLATED) as z:
     for f in sorted(os.listdir(os.path.join(demo, "Media"))):
         if f.lower().endswith(".wav"):
             z.write(os.path.join(demo, "Media", f), ddest + "/Media/" + f)
-    for f in ("README.md", "CHANGELOG.md", "VERSION", "LICENSE.md"):
+    for f in ("Install Inference Review and Presentation.lua", "README.md", "CHANGELOG.md", "VERSION", "LICENSE.md"):
         z.write(os.path.join(ROOT, f), NAME + "/" + f)
     z.write(os.path.join(ROOT, "theme", "LICENSE-LGPL-2.1.txt"), NAME + "/LICENSE-LGPL-2.1.txt")
 print("kit    ", os.path.relpath(kit_zip, ROOT), os.path.getsize(kit_zip), "bytes")

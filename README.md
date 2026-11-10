@@ -28,8 +28,9 @@ level matching, annotating, export) in about 15 minutes.
 
 | File | What it is |
 |---|---|
+| `Install Inference Review and Presentation.lua` | The one-step installer (see **Quick install** below). |
 | `Inference_Review_and_Presentation.ReaperThemeZip` | The theme. Based on Cockos Default 7.0 (LGPL), adds two track panel layouts: **Review** and **Review Note**. |
-| `Scripts/Inference Review and Presentation/` | 19 Lua scripts, `lib/` and `icons/` (keep the folder together). |
+| `Scripts/Inference Review and Presentation/` | The Lua scripts, `lib/` and `icons/` (keep the folder together). |
 | `README.md`, `CHANGELOG.md`, `VERSION`, `LICENSE.md`, `LICENSE-LGPL-2.1.txt` | This guide, what changed, licences. |
 | `demo/Inference Review Demo/` | Demo project + its audio (made-up test sound). Open the `.RPP`. |
 | `docs/TUTORIAL.md`, `docs/images/` | Step-by-step tutorial on the demo; pictures. |
@@ -66,32 +67,60 @@ Repository layout:
 
 ## Install (once per computer)
 
+### Quick install (recommended)
+
+1. Unzip the release zip anywhere (keep the folder together).
+2. In REAPER: **Actions > Show action list > New action > Load ReaScript**, choose
+   **`Install Inference Review and Presentation.lua`** in the unzipped folder, then **Run** (or double-click it in the list).
+3. Read the message, then **quit and reopen REAPER**. Don't open *Customize menus/toolbars* before restarting.
+4. At the right end of the **Main toolbar** there are two new logo buttons:
+   **grey/blue** = toolbar 16 (Session, Annotate), **yellow/orange** = toolbar 15 (Playback, Output).
+   Click them to show or hide the toolbars (the logo gets a white ring while its toolbar is open).
+   Right-click a toolbar > **Dock**, and dock 15 under 16 for two tidy rows.
+
+What the installer does: copies the scripts (with `lib` and the icons) into REAPER's `Scripts` folder and adds them all to
+the action list; installs the theme and switches to it; writes Floating toolbars 16 and 15 and the two Main toolbar buttons
+into REAPER's `reaper-menu.ini`. Your other toolbars and menus are kept, and so are your Main toolbar buttons
+(if you never changed the Main toolbar, you get REAPER's default buttons plus the two logos).
+The first time, it saves your menus as `reaper-menu.ini.before-inference-review` in the REAPER resource folder.
+If toolbar 16 or 15 already holds something else, it asks before replacing it.
+**Updating**: unzip the new release and run its installer the same way; nothing is added twice.
+To switch back to your usual theme: **Options > Themes**.
+
+### Set up by hand (if you prefer, or if the installer can't be used)
+
 1. **Theme**: double-click `Inference_Review_and_Presentation.ReaperThemeZip` (or drag it onto REAPER).
    It appears in **Options > Themes**. Switch back to your usual theme the same way.
 2. **Scripts**: copy the whole `Scripts/Inference Review and Presentation` folder into REAPER's Scripts folder
    (**Options > Show REAPER resource path in explorer/finder**, then `Scripts`).
    In REAPER: **Actions > Show action list > New action > Load ReaScript**,
    select all the `Inference Review and Presentation - ….lua` files (not `lib`), **Open**.
-3. **Toolbars**: run **Inference Review and Presentation - Create toolbar file**. It installs the coloured button icons
-   and writes the toolbar files, using this computer's action IDs, into REAPER's **MenuSets** folder
-   (REAPER resource path > `MenuSets`, where REAPER keeps menu and toolbar files):
-   `Inference Review and Presentation toolbars 16 + 15.ReaperMenuSet` (both toolbars) plus one `.ReaperMenu` per toolbar.
+3. **Toolbars 16 and 15**: run **Inference Review and Presentation - Create toolbar file**. It installs the coloured button
+   icons and writes the toolbar files, using this computer's action IDs, into REAPER's **MenuSets** folder
+   (REAPER resource path > `MenuSets`): `Inference Review and Presentation toolbars 16 + 15.ReaperMenuSet`
+   (both toolbars) plus one `.ReaperMenu` per toolbar.
    Then **Options > Customize menus/toolbars > Import/Export > Import**, go to the MenuSets folder
    (the dialog may open somewhere else; on Mac press Cmd+Shift+G and paste the path the script shows),
-   choose the *toolbars 16 + 15* file, **OK**. This replaces Floating toolbars 16 and 15 only; your other toolbars
-   and menus stay as they are.
+   choose the *toolbars 16 + 15* file, **OK**. This replaces Floating toolbars 16 and 15 only.
    (If you already use toolbar 15 or 16 for something else: pick a free floating toolbar in the top list and
    import the single *toolbar 16* or *toolbar 15* `.ReaperMenu` file into it instead.)
-   Open them from the action list: run **Toolbar: Open/close toolbar 16** and **Toolbar: Open/close toolbar 15**
-   and dock 15 under 16 for two tidy rows
-   (right-click a toolbar > Dock). REAPER toolbars can't force a line break, which is why the kit uses two.
-   **Hover a button** for its tooltip: what it does, what it needs, and the script name.
-   Button colours: **grey** = session setup, **blue** = prompts / notes / markers, **yellow** = playback,
-   **orange** = export and settings. If the colours look pale, reset
-   **Options > Themes > Theme Adjuster / Color Controls** for this theme: its gamma/contrast also tints toolbar icons.
-   To turn any other toolbar button into text: right-click it in Customize menus/toolbars >
-   **Set tooltip/text icon…**, Mode **Text double-wide icon**.
-4. Optional: give the scripts shortcuts in the action list (suggested below).
+4. **Main toolbar buttons** (optional): **Options > Customize menus/toolbars**, pick **Main toolbar** in the top list.
+   Click the last button in the list, **Add…**, search `Toolbar: Open/close toolbar 16`, select it, **Select/close**.
+   Right-click the new entry > **Set icon…** > choose `irp_logo16.png` (Create toolbar file already put
+   it in REAPER's toolbar icon folder). Do the same with `Toolbar: Open/close toolbar 15` and `irp_logo15.png`. **OK**.
+   Without the Main toolbar buttons, open the toolbars from the action list:
+   **Toolbar: Open/close toolbar 16** and **Toolbar: Open/close toolbar 15**.
+
+### Using the toolbars
+
+REAPER toolbars can't force a line break, which is why the kit uses two.
+**Hover a button** for its tooltip: what it does, what it needs, and the script name.
+Button colours: **grey** = session setup, **blue** = prompts / notes / markers, **yellow** = playback,
+**orange** = export and settings. If the colours look pale, reset
+**Options > Themes > Theme Adjuster / Color Controls** for this theme: its gamma/contrast also tints toolbar icons.
+To turn any other toolbar button into text: right-click it in Customize menus/toolbars >
+**Set tooltip/text icon…**, Mode **Text double-wide icon**.
+Optional: give the scripts shortcuts in the action list (suggested below).
 
 ## Start a review session
 
@@ -127,6 +156,7 @@ Script names start with `Inference Review and Presentation - `; search the actio
 | Set note lane | Set selected tracks as note | Makes tracks note lanes: name only, no audio output. | selected track(s) | — |
 | Fit to window | Fit tracks to window | Resizes all review lanes to fill the arrange view and locks their heights. | nothing (run again after resizing / screen sharing) | `F` |
 | Lock height | Toggle height lock on selected tracks | Locks or unlocks the height of the selected tracks. | selected track(s) | — |
+| Unlock height | Unlock height of all tracks | Unlocks the height of every track, so you can resize lanes by hand. | nothing | — |
 | **Toolbar 16: Annotate** (blue) | | | | |
 | + Prompt & Region lane 1 | Add prompt | Region P01, P02 … in **ruler lane 1** plus note items on PROMPT and FINDINGS. | time selection (or uses 5 s at the edit cursor) | — |
 | + Region lane 2 | Add region lane 2 | Region in **ruler lane 2** for rounds, sections or issues. | time selection; REAPER 7.62+ | — |
@@ -146,7 +176,7 @@ Script names start with `Inference Review and Presentation - `; search the actio
 | Settings | Theme settings | Sliders for track name size, name width and compact height. | the Inference_Review_and_Presentation theme active | — |
 | About | About | Kit version, theme version actually loaded, REAPER version; warns if REAPER is older than 7.62, the theme isn't active, or the theme is from another kit version. | nothing | — |
 
-Not on the toolbars: **Lock height of all tracks**, **Unlock height of all tracks**, **Create toolbar file**,
+Not on the toolbars: **Lock height of all tracks**, **Create toolbar file**,
 **Audition config 0** … **9** (for number keys, below).
 
 ## Number keys: Audition config 0–9

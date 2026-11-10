@@ -9,7 +9,8 @@
 --       (Or pick 'Floating toolbar 16' > Import the "toolbar 16" file, then the same for 15.)
 -- Hovering a button shows its tooltip: what it does, what it needs, and the script name (to find it in the action list).
 -- Needs: the kit scripts loaded in the action list.
-local dir = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
+-- The installer runs this file too: it sets IRP_INSTALL = { dir = <installed scripts folder> } and gets the file paths back.
+local dir = IRP_INSTALL and IRP_INSTALL.dir or ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
 local T = dofile(dir .. "lib/inference_review_lib.lua")
 if not T.check_reaper() then return end
 
@@ -34,6 +35,9 @@ local toolbars = {
       { "Toggle height lock on selected tracks", "Lock height", "lock",
         "Locks or unlocks the height of the selected tracks.",
         "selected track(s)" },
+      { "Unlock height of all tracks", "Unlock height", "unlock",
+        "Unlocks the height of every track, so you can resize lanes by hand.",
+        "nothing" },
       "-",
       { "Add prompt", "+ Prompt & Region lane 1", "prompt",
         "Region P01, P02 ... in ruler lane 1 plus note items on PROMPT and FINDINGS.",
@@ -102,13 +106,15 @@ local function copy(a, b)
   g:write(s); g:close(); return true
 end
 local icondst = reaper.GetResourcePath() .. "/Data/toolbar_icons/"
+local keys = { "logo16", "logo15" } -- Main toolbar logo buttons (open / close toolbar 16 / 15), used by the installer
+for _, tb in ipairs(toolbars) do
+  for _, b in ipairs(tb.buttons) do if type(b) == "table" then keys[#keys + 1] = b[3] end end
+end
 local copied = 0
 for _, sub in ipairs({ "", "150/", "200/" }) do
   reaper.RecursiveCreateDirectory(icondst .. sub, 0)
-  for _, tb in ipairs(toolbars) do
-    for _, b in ipairs(tb.buttons) do
-      if type(b) == "table" and copy(dir .. "icons/" .. sub .. "irp_" .. b[3] .. ".png", icondst .. sub .. "irp_" .. b[3] .. ".png") then copied = copied + 1 end
-    end
+  for _, k in ipairs(keys) do
+    if copy(dir .. "icons/" .. sub .. "irp_" .. k .. ".png", icondst .. sub .. "irp_" .. k .. ".png") then copied = copied + 1 end
   end
 end
 
@@ -169,6 +175,10 @@ end
 local setname = prefix .. "toolbars 16 + 15.ReaperMenuSet"
 if not write(menudir .. setname, table.concat(sections, "\n")) then T.msg("Could not write " .. menudir .. setname) return end
 table.insert(written, 1, setname)
+if IRP_INSTALL then -- installer: hand back the results, it shows its own message
+  IRP_INSTALL.set, IRP_INSTALL.copied, IRP_INSTALL.missing = menudir .. setname, copied, missing
+  return
+end
 
 T.msg("Toolbar files written to\n" .. menudir .. "\n\n- " .. table.concat(written, "\n- ") .. "\n\nIcons installed: " .. copied ..
   (#missing > 0 and ("\n\nNot in the action list yet (load them first):\n- " .. table.concat(missing, "\n- ")) or "") ..

@@ -28,6 +28,7 @@ BUTTONS = [  # file key, label, group, toggle?
   ("notelane", "Set note lane", "setup", False),
   ("fit", "Fit to window", "setup", False),
   ("lock", "Lock height", "setup", False),
+  ("unlock", "Unlock height", "setup", False),
   ("prompt", "+ Prompt & Region lane 1", "annotate", False),
   ("region2", "+ Region lane 2", "annotate", False),
   ("note", "+ Note", "annotate", False),
@@ -73,5 +74,35 @@ for scale, sub in ((1, ""), (1.5, "150"), (2, "200")):
             ty = (H - (bb[3]-bb[1]))//2 - bb[1]
             d.text((tx, ty), labels[st], font=font, fill=fg+(255,))
         os.makedirs(os.path.join(OUT, sub), exist_ok=True)
+        img.save(os.path.join(OUT, sub, "irp_" + key + ".png"))
+
+# Main toolbar logo buttons (open/close toolbar 16 / 15): square kit logo, a waveform over the two colours of that
+# toolbar's button groups. Frames: normal, hover (lighter), on = toolbar open (white ring).
+LOGOS = {"logo16": ("grey", "blue"), "logo15": ("yellow", "orange")}
+BARS = [0.35, 0.75, 1.0, 0.55, 0.85]  # waveform bar heights
+for scale, sub in ((1, ""), (1.5, "150"), (2, "200")):
+    S = int(round(30*scale)); m = max(1, int(round(2*scale))); r = int(round(6*scale)); ring = max(2, int(round(2*scale)))
+    for key, (c1, c2) in LOGOS.items():
+        img = Image.new("RGBA", (S*3, S), (0,0,0,0))
+        for st in range(3):
+            a, b = PAL[c1], PAL[c2]
+            if st == 1: a, b = mix(a, (255,255,255), 0.25), mix(b, (255,255,255), 0.25)
+            tile = Image.new("RGBA", (S, S), (0,0,0,0))
+            mask = Image.new("L", (S, S), 0)
+            ImageDraw.Draw(mask).rounded_rectangle([m, m, S-1-m, S-1-m], radius=r, fill=255)
+            grad = Image.new("RGBA", (S, S))
+            gd = ImageDraw.Draw(grad)
+            for x in range(-S, S):  # diagonal blend from colour 1 (top left) to colour 2 (bottom right)
+                gd.line([(x, 0), (x+S, S)], fill=mix(a, b, min(1, max(0, (x + S/2) / S)))+(255,), width=2)
+            tile.paste(grad, (0, 0), mask)
+            d = ImageDraw.Draw(tile)
+            n, bw = len(BARS), max(2, int(round(2.2*scale)))
+            gap = (S - 2*m - 2*int(round(6*scale)) - n*bw) / (n - 1)
+            for i, h in enumerate(BARS):
+                x = int(round(m + 6*scale + i*(bw + gap))); hh = h*(S - 2*m - 2*int(round(6*scale)))
+                d.rounded_rectangle([x, S/2 - hh/2, x + bw - 1, S/2 + hh/2], radius=bw//2, fill=PAL["black"]+(255,))
+            if st == 2:
+                d.rounded_rectangle([m, m, S-1-m, S-1-m], radius=r, outline=PAL["white"]+(255,), width=ring)
+            img.paste(tile, (st*S, 0))
         img.save(os.path.join(OUT, sub, "irp_" + key + ".png"))
 print("ok")

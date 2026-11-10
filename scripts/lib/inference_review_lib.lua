@@ -5,7 +5,7 @@ local T = {}
 T.EXT = "InferenceReview"
 
 -- Kit version (theme + scripts + toolbar share one number). Change it with: python3 tools/set_version.py X.Y.Z
-T.VERSION = "1.1.0"
+T.VERSION = "1.2.0"
 T.MIN_REAPER = "7.0"        -- below this the kit does not run (track layouts, height lock)
 T.FEATURE_REAPER = "7.62"   -- below this: no region lanes (prompts all land in one ruler lane, Add region lane 2 is off)
 

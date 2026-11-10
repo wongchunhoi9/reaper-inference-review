@@ -3,11 +3,22 @@
 One version number for the whole kit (theme + scripts + toolbar). Each entry says what changed and
 what teammates must redo after updating (re-import the toolbar, re-assign shortcuts, reload the theme).
 
-## Unreleased
+## 1.2.0 (2026-11-10)
 
+- **One-step installer** `Install Inference Review and Presentation.lua` (in the release zip): load it once in the action
+  list and run it. It copies the scripts, lib and icons, adds every script to the action list, installs and switches to
+  the theme, writes Floating toolbars 16 and 15, and adds two **logo buttons** to the Main toolbar that show / hide them.
+  Restart REAPER afterwards. Keeps your other toolbars and your Main toolbar buttons (a never-changed Main toolbar gets
+  REAPER's default buttons plus the logos); backs up your menus once as `reaper-menu.ini.before-inference-review`;
+  asks before replacing a toolbar 16 / 15 that holds something else. Running it again updates without duplicates.
+- **Unlock height** button on toolbar 16 (script *Unlock height of all tracks*).
 - **Create toolbar file** now writes into REAPER's `MenuSets` folder instead of next to the scripts, and adds
   `… toolbars 16 + 15.ReaperMenuSet`: one import sets up both toolbars (other toolbars and menus are left alone).
   Old toolbar files next to the scripts are removed.
+- README: quick install, plus a by-hand guide for the toolbars and Main toolbar buttons.
+
+**After updating:** run the new installer (it replaces toolbars 16 and 15 with the new button set), then restart REAPER.
+Tested on Mac (REAPER 7.83); Windows not yet tested.
 
 ## 1.1.0 (2026-10-28)
 

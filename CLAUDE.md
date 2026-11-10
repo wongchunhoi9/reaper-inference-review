@@ -14,6 +14,8 @@ change it only with `python3 tools/set_version.py X.Y.Z` (build.py refuses misma
 - `icons/` toolbar PNGs (100 %, `150/`, `200/`); made by `tools/make_icons.py`; shipped inside the scripts folder as `icons/`.
 - `tools/build.py` → `dist/Inference_Review_and_Presentation.ReaperThemeZip` + `dist/inference-review-and-presentation-<VERSION>.zip`
   (theme + Scripts/… + icons + README + CHANGELOG + licences). `dist/` is git-ignored; releases go on GitHub.
+- `Install Inference Review and Presentation.lua` (repo root) = one-step installer, shipped at the zip root; reuses
+  `Create toolbar file` (sets global `IRP_INSTALL`) and merges into `reaper-menu.ini`. Status / findings: docs/PLAN.md Phase 4.
 - `dev/` test tools (not shipped): `irp_dev_bridge.lua`, `run.sh`, `harness.lua`, `install.lua`, `state.lua`.
 - Licences: theme LGPL v2+ (`theme/LICENSE-LGPL-2.1.txt`), everything else MIT (`LICENSE.md`).
 
@@ -44,3 +46,7 @@ After moving/renaming the folder, delete the old "irp_dev_bridge.lua" action and
    with faked dialogs (runs from repo `scripts/`; set `_G.RUNKIT_DIR = INSTALLED_DIR` after install.lua to run the installed copy; plain globals in cmd code stay in the bridge sandbox, so use `_G.` (also `_G.LOG = {}` to read the harness log)). Always test in a new project tab (`reaper.Main_OnCommand(40859, 0)`), never the user's project.
 4. `dofile(dev/install.lua)` copies `scripts/` + `icons/` into REAPER/Scripts/Inference Review and Presentation and registers them.
 5. Build with `python3 tools/build.py`, reload theme: `reaper.OpenColorThemeFile(IRP_ROOT .. "dist/Inference_Review_and_Presentation.ReaperThemeZip")`.
+6. Testing the installer / toolbars without touching the real REAPER setup: portable copy. Copy REAPER.app into an empty
+   folder (scratchpad), `touch reaper.ini` next to it, launch with `open -n <folder>/REAPER.app`; it uses that folder as its
+   resource path (first launch scans plugins: copy `reaper-vstplugins_arm64.ini` from the real resource folder to skip most).
+   Drive it with `<folder>/Scripts/__startup.lua` that runs `<folder>/stepN.lua` per launch. Quit with `kill -TERM <pid>`.
